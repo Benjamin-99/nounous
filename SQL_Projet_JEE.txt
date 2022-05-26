@@ -1,0 +1,72 @@
+CREATE TABLE Role(
+   role VARCHAR(50),
+   PRIMARY KEY(role)
+);
+
+CREATE TABLE Compte(
+   idCompte SMALLINT,
+   email VARCHAR(25) NOT NULL,
+   motdepasse VARCHAR(250) NOT NULL,
+   pseudo VARCHAR(25) NOT NULL,
+   role VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idCompte),
+   FOREIGN KEY(role) REFERENCES Role(role)
+);
+
+CREATE TABLE Nounou(
+   idNounou SMALLINT,
+   nom VARCHAR(250) NOT NULL,
+   prenom VARCHAR(250) NOT NULL,
+   adresse VARCHAR(250),
+   telephone VARCHAR(25) NOT NULL,
+   idCompte SMALLINT NOT NULL,
+   PRIMARY KEY(idNounou),
+   UNIQUE(idCompte),
+   FOREIGN KEY(idCompte) REFERENCES Compte(idCompte)
+);
+
+CREATE TABLE Parent(
+   idParent SMALLINT,
+   nom VARCHAR(250) NOT NULL,
+   prenom VARCHAR(250) NOT NULL,
+   adresse VARCHAR(250),
+   telephone VARCHAR(25) NOT NULL,
+   idCompte SMALLINT NOT NULL,
+   PRIMARY KEY(idParent),
+   UNIQUE(idCompte),
+   FOREIGN KEY(idCompte) REFERENCES Compte(idCompte)
+);
+
+CREATE TABLE Enfant(
+   idEnfant SMALLINT,
+   nom VARCHAR(250) NOT NULL,
+   prenom VARCHAR(250) NOT NULL,
+   dateNaissance DATE NOT NULL,
+   idParent SMALLINT NOT NULL,
+   PRIMARY KEY(idEnfant),
+   FOREIGN KEY(idParent) REFERENCES Parent(idParent)
+);
+
+CREATE TABLE Contrat(
+   idContrat INT,
+   tarifHoraire DECIMAL(15,2) NOT NULL,
+   nbreHeuresEntretien TIME NOT NULL,
+   tarifRepas DECIMAL(15,2) NOT NULL,
+   idParent SMALLINT NOT NULL,
+   idNounou SMALLINT NOT NULL,
+   PRIMARY KEY(idContrat),
+   FOREIGN KEY(idParent) REFERENCES Parent(idParent),
+   FOREIGN KEY(idNounou) REFERENCES Nounou(idNounou)
+);
+
+CREATE TABLE Garder(
+   idEnfant SMALLINT,
+   idNounou SMALLINT,
+   DateDeGarde DATE NOT NULL,
+   HeureArrivee TIME NOT NULL,
+   HeureDepart TIME NOT NULL,
+   Repas LOGICAL NOT NULL,
+   PRIMARY KEY(idEnfant, idNounou),
+   FOREIGN KEY(idEnfant) REFERENCES Enfant(idEnfant),
+   FOREIGN KEY(idNounou) REFERENCES Nounou(idNounou)
+);
