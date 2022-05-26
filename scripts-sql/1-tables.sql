@@ -51,3 +51,4 @@ CREATE TABLE telephone (
 	PRIMARY KEY (IdTelephone)
 );
 
+
