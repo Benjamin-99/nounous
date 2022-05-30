@@ -1,72 +1,72 @@
-CREATE TABLE Role(
+CREATE TABLE role(
    role VARCHAR(50),
    PRIMARY KEY(role)
 );
 
-CREATE TABLE Compte(
-   idCompte SMALLINT,
-   email VARCHAR(25) NOT NULL,
-   motdepasse VARCHAR(250) NOT NULL,
-   pseudo VARCHAR(25) NOT NULL,
-   role VARCHAR(50) NOT NULL,
-   PRIMARY KEY(idCompte),
-   FOREIGN KEY(role) REFERENCES Role(role)
+CREATE TABLE compte(
+   IdCompte SMALLINT,
+   Email VARCHAR(25) NOT NULL,
+   Motdepasse VARCHAR(250) NOT NULL,
+   Pseudo VARCHAR(25) NOT NULL,
+   Role VARCHAR(50) NOT NULL,
+   PRIMARY KEY(IdCompte),
+   FOREIGN KEY(Role) REFERENCES role(Role)
 );
 
-CREATE TABLE Nounou(
-   idNounou SMALLINT,
-   nom VARCHAR(250) NOT NULL,
-   prenom VARCHAR(250) NOT NULL,
-   adresse VARCHAR(250),
-   telephone VARCHAR(25) NOT NULL,
-   idCompte SMALLINT NOT NULL,
-   PRIMARY KEY(idNounou),
-   UNIQUE(idCompte),
-   FOREIGN KEY(idCompte) REFERENCES Compte(idCompte)
+CREATE TABLE nounou(
+   IdNounou SMALLINT,
+   Nom VARCHAR(250) NOT NULL,
+   Prenom VARCHAR(250) NOT NULL,
+   Adresse VARCHAR(250),
+   Telephone VARCHAR(25) NOT NULL,
+   IdCompte SMALLINT NOT NULL,
+   PRIMARY KEY(IdNounou),
+   UNIQUE(IdCompte),
+   FOREIGN KEY(IdCompte) REFERENCES compte(IdCompte)
 );
 
-CREATE TABLE Parent(
-   idParent SMALLINT,
-   nom VARCHAR(250) NOT NULL,
-   prenom VARCHAR(250) NOT NULL,
-   adresse VARCHAR(250),
-   telephone VARCHAR(25) NOT NULL,
-   idCompte SMALLINT NOT NULL,
-   PRIMARY KEY(idParent),
-   UNIQUE(idCompte),
-   FOREIGN KEY(idCompte) REFERENCES Compte(idCompte)
+CREATE TABLE parent(
+   IdParent SMALLINT,
+   Nom VARCHAR(250) NOT NULL,
+   Prenom VARCHAR(250) NOT NULL,
+   Adresse VARCHAR(250),
+   Telephone VARCHAR(25) NOT NULL,
+   IdCompte SMALLINT NOT NULL,
+   PRIMARY KEY(IdParent),
+   UNIQUE(IdCompte),
+   FOREIGN KEY(IdCompte) REFERENCES compte(IdCompte)
 );
 
-CREATE TABLE Enfant(
-   idEnfant SMALLINT,
-   nom VARCHAR(250) NOT NULL,
-   prenom VARCHAR(250) NOT NULL,
-   dateNaissance DATE NOT NULL,
-   idParent SMALLINT NOT NULL,
-   PRIMARY KEY(idEnfant),
-   FOREIGN KEY(idParent) REFERENCES Parent(idParent)
+CREATE TABLE enfant(
+   IdEnfant SMALLINT,
+   Nom VARCHAR(250) NOT NULL,
+   Prenom VARCHAR(250) NOT NULL,
+   DateNaissance DATE NOT NULL,
+   IdParent SMALLINT NOT NULL,
+   PRIMARY KEY(IdEnfant),
+   FOREIGN KEY(IdParent) REFERENCES parent(IdParent)
 );
 
-CREATE TABLE Contrat(
-   idContrat INT,
-   tarifHoraire DECIMAL(15,2) NOT NULL,
-   nbreHeuresEntretien TIME NOT NULL,
-   tarifRepas DECIMAL(15,2) NOT NULL,
-   idParent SMALLINT NOT NULL,
-   idNounou SMALLINT NOT NULL,
-   PRIMARY KEY(idContrat),
-   FOREIGN KEY(idParent) REFERENCES Parent(idParent),
-   FOREIGN KEY(idNounou) REFERENCES Nounou(idNounou)
+CREATE TABLE contrat(
+   IdContrat INT,
+   TarifHoraire DECIMAL(15,2) NOT NULL,
+   NbreHeuresEntretien TIME NOT NULL,
+   TarifRepas DECIMAL(15,2) NOT NULL,
+   IdParent SMALLINT NOT NULL,
+   IdNounou SMALLINT NOT NULL,
+   PRIMARY KEY(IdContrat),
+   FOREIGN KEY(IdParent) REFERENCES parent(IdParent),
+   FOREIGN KEY(IdNounou) REFERENCES nounou(IdNounou)
 );
 
-CREATE TABLE Garder(
-   idEnfant SMALLINT,
-   idNounou SMALLINT,
+CREATE TABLE garder(
+   IdEnfant SMALLINT,
+   IdNounou SMALLINT,
    DateDeGarde DATE NOT NULL,
    HeureArrivee TIME NOT NULL,
    HeureDepart TIME NOT NULL,
    Repas LOGICAL NOT NULL,
-   PRIMARY KEY(idEnfant, idNounou),
-   FOREIGN KEY(idEnfant) REFERENCES Enfant(idEnfant),
-   FOREIGN KEY(idNounou) REFERENCES Nounou(idNounou)
+   PRIMARY KEY(IdEnfant, IdNounou),
+   FOREIGN KEY(IdEnfant) REFERENCES Enfant(IdEnfant),
+   FOREIGN KEY(IdNounou) REFERENCES Nounou(IdNounou)
 );
