@@ -23,7 +23,7 @@ INSERT INTO role (IdCompte, Role) VALUES
   ( 1, 'ADMINISTRATEUR' ),
   ( 1, 'UTILISATEUR' ),
   ( 2, 'UTILISATEUR' ),
-  ( 3, 'UTILISATEUR' );
+  ( 3, 'PARENT' );
   
   
 INSERT INTO categorie (IdCategorie, Libelle ) VALUES 
@@ -39,7 +39,7 @@ ALTER TABLE categorie ALTER COLUMN IdCategorie RESTART WITH 6;
 INSERT INTO personne (IdPersonne, IdCategorie, Nom, Prenom) VALUES 
   ( 1, 1, 'DESVALOIS', 'Christian' ),
   ( 2, 1, 'BELABDELLI', 'Fethi' ),
-  ( 3, 1, 'AMBLARD', 'Emmanuel' );
+  ( 3, 1, 'AMBLARD', 'Emmanuel');
 
 ALTER TABLE personne ALTER COLUMN IdPersonne RESTART WITH 4;
   
@@ -57,20 +57,12 @@ INSERT INTO nounou (IdNounou,IdCompte,  Adresse, Nom, Prenom) VALUES
 
 ALTER TABLE nounou ALTER COLUMN IdNounou RESTART WITH 4;
 
-INSERT INTO contrat (IdContrat,TarifHoraire, NbreHeuresEntretien, TarifRepas,  IdParent,IdNounou) VALUES 
-  ( 1,5, '02:15:00',1,1, 1 ),
-  ( 2,5, '02:15:00',1,2, 2 ),
-  ( 3,5, '02:15:00',1,3, 3 );
+INSERT INTO contrat (IdContrat,TarifHoraire, NbreHeuresEntretien, TarifRepas, IdParent,IdNounou, NomEnfant, PrenomEnfant,DateNaissance,DateDeGarde,HeureArrivee,HeureDepart,Repas ) VALUES 
+  ( 1,5, '02:15:00',1,1, 1, 'DESVALOIS', 'Christian','19/10/2022','19/11/2022','03:15:00','02:15:00',TRUE ),
+  ( 2,5, '02:15:00',1,2, 2 , 'BELABDELLI', 'Fethi','19/10/2022','19/11/2022','03:15:00','02:15:00',TRUE),
+  ( 3,5, '02:15:00',1,3, 3 , 'AMBLARD', 'Emmanuel','19/10/2022','19/11/2022','03:15:00','02:15:00',TRUE);
 
 ALTER TABLE contrat  ALTER COLUMN IdContrat RESTART WITH 4;
-
-
-INSERT INTO enfant (IdEnfant,IdPArent, DateNaissance, Nom, Prenom) VALUES 
-  ( 1, 1,'19/10/2021', 'DESVALOIS', 'Christian' ),
-  ( 2, 2,'19/10/2021', 'BELABDELLI', 'Fethi' ),
-  ( 3, 3,'19/10/2021', 'AMBLARD', 'Emmanuel' );
-
-ALTER TABLE nounou ALTER COLUMN IdNounou RESTART WITH 4;
 
 INSERT INTO telephone (IdTelephone, IdPersonne, IdParent, IdNounou, Libelle, Numero ) VALUES 
   ( 11, 1,1,1, 'Portable', '06 11 11 11 11' ),

@@ -87,30 +87,19 @@ CREATE TABLE contrat(
    TarifRepas DECIMAL(15,2) NOT NULL,
    IdParent INT NOT NULL,
    IdNounou INT NOT NULL,
-   PRIMARY KEY(IdContrat),
-   FOREIGN KEY(IdParent) REFERENCES parent(IdParent),
-   FOREIGN KEY(IdNounou) REFERENCES nounou(IdNounou)
-);
-CREATE TABLE enfant(
-   IdEnfant SMALLINT,
-   Nom VARCHAR(250) NOT NULL,
-   Prenom VARCHAR(250) NOT NULL,
+   NomEnfant VARCHAR(250) NOT NULL,
+   PrenomEnfant VARCHAR(250) NOT NULL,
    DateNaissance DATE NOT NULL,
-   IdParent SMALLINT NOT NULL,
-   PRIMARY KEY(IdEnfant),
-   FOREIGN KEY(IdParent) REFERENCES parent(IdParent)
-);
-
-CREATE TABLE garder(
-   IdEnfant SMALLINT,
-   IdNounou SMALLINT,
    DateDeGarde DATE NOT NULL,
    HeureArrivee TIME NOT NULL,
    HeureDepart TIME NOT NULL,
    Repas BOOLEAN NOT NULL,
-   PRIMARY KEY(IdEnfant, IdNounou),
-   FOREIGN KEY(IdEnfant) REFERENCES enfant(IdEnfant),
+   PRIMARY KEY(IdContrat),
+   FOREIGN KEY(IdParent) REFERENCES parent(IdParent),
    FOREIGN KEY(IdNounou) REFERENCES nounou(IdNounou)
 );
+
+
+
 
 
