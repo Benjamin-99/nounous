@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-//import nounous.ejb.data.Contrat;
 
 
 @SuppressWarnings("serial")
@@ -13,16 +12,16 @@ public class DtoParent implements Serializable {
 	
 	// Champs
 	
-	private int				id;
+	private int				idParent;
 	
 	private String			nom;
 	
 	private String			prenom;
 	
-	//private Contrat			contrat;
+	private String          adresse;
 	
-	private DtoCategorie	categorie;
-	
+
+
 	private List<DtoTelephone>	telephones = new ArrayList<>();
 	
 	
@@ -31,26 +30,34 @@ public class DtoParent implements Serializable {
 	public DtoParent() {
 	}
 
-	public DtoParent(int id, String nom, String prenom, DtoCategorie categorie ) {
+	public DtoParent(int idParent, String nom, String prenom, String adresse ) {
 		super();
-		this.id = id;
+		this.idParent = idParent;
 		this.nom = nom;
 		this.prenom = prenom;
-	//	this.contrat = contrat;
-		this.categorie = categorie;
+		this.adresse = adresse;
 	}
 	
 	
 	
 	// Getters & setters
 
-	public int getId() {
-		return id;
+	public int getIdParent() {
+		return idParent;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getAdresse() {
+		return adresse;
 	}
+
+	public void setIdParent(int idParent) {
+		this.idParent = idParent;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	
 
 	public String getNom() {
 		return nom;
@@ -68,14 +75,7 @@ public class DtoParent implements Serializable {
 		this.prenom = prenom;
 	}
 
-	public DtoCategorie getCategorie() {
-		return categorie;
-	}
-
-	public void setCategorie(DtoCategorie categorie) {
-		this.categorie = categorie;
-	}
-
+	
 	public List<DtoTelephone> getTelephones() {
 		return telephones;
 	}

@@ -1,8 +1,7 @@
 package nounous.commun.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 @SuppressWarnings("serial")
@@ -11,15 +10,15 @@ public class DtoNounou implements Serializable {
 	
 	// Champs
 	
-	private int				id;
+	private int				idNounou;
 	
 	private String			nom;
 	
 	private String			prenom;
 	
-	private DtoCategorie	categorie;
+	private String          adresse;
 	
-	private List<DtoTelephone>	telephones = new ArrayList<>();
+	private String	telephone ;
 	
 	
 	// Constructeurs
@@ -27,28 +26,64 @@ public class DtoNounou implements Serializable {
 	public DtoNounou() {
 	}
 
-	public DtoNounou(int id, String nom, String prenom, DtoCategorie categorie ) {
+	public DtoNounou(int idNounou, String nom, String prenom, String adresse ) {
 		super();
-		this.id = id;
+		this.idNounou = idNounou;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.categorie = categorie;
+		this.adresse = adresse;
 	}
 	
 	
 	
 	// Getters & setters
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 
 	public String getNom() {
 		return nom;
+	}
+
+	/**
+	 * @return the idNounou
+	 */
+	public int getIdNounou() {
+		return idNounou;
+	}
+
+	/**
+	 * @return the adresse
+	 */
+	public String getAdresse() {
+		return adresse;
+	}
+
+	/**
+	 * @return the telephone
+	 */
+	public String getTelephone() {
+		return telephone;
+	}
+
+	/**
+	 * @param idNounou the idNounou to set
+	 */
+	public void setIdNounou(int idNounou) {
+		this.idNounou = idNounou;
+	}
+
+	/**
+	 * @param adresse the adresse to set
+	 */
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	/**
+	 * @param telephone the telephone to set
+	 */
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 	public void setNom(String nom) {
@@ -63,20 +98,7 @@ public class DtoNounou implements Serializable {
 		this.prenom = prenom;
 	}
 
-	public DtoCategorie getCategorie() {
-		return categorie;
-	}
-
-	public void setCategorie(DtoCategorie categorie) {
-		this.categorie = categorie;
-	}
-
-	public List<DtoTelephone> getTelephones() {
-		return telephones;
-	}
-
-	public void setTelephones(List<DtoTelephone> telephones) {
-		this.telephones = telephones;
-	}
+	
+	
 
 }
