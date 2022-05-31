@@ -57,10 +57,18 @@ INSERT INTO nounou (IdNounou,IdCompte,  Adresse, Nom, Prenom) VALUES
 
 ALTER TABLE nounou ALTER COLUMN IdNounou RESTART WITH 4;
 
-INSERT INTO contrat (IdContrat,TarifHoraire, NbreHeuresEntretien, TarifRepas, IdParent,IdNounou, NomEnfant, PrenomEnfant,DateNaissance,DateDeGarde,HeureArrivee,HeureDepart,Repas ) VALUES 
-  ( 1,5, '02:15:00',1,1, 1, 'DESVALOIS', 'Christian','19/10/2022','19/11/2022','03:15:00','02:15:00',TRUE ),
-  ( 2,5, '02:15:00',1,2, 2 , 'BELABDELLI', 'Fethi','19/10/2022','19/11/2022','03:15:00','02:15:00',TRUE),
-  ( 3,5, '02:15:00',1,3, 3 , 'AMBLARD', 'Emmanuel','19/10/2022','19/11/2022','03:15:00','02:15:00',TRUE);
+INSERT INTO enfant (IdEnfant, IdParent,NomEnfant, PrenomEnfant, DateNaissance) VALUES 
+  ( 1, 1,'DESVALOIS', 'Christian','19/10/2022' ),
+  ( 2, 2,'BELABDELLI', 'Fethi','19/10/2022' ),
+  ( 3, 3,'AMBLARD', 'Emmanuel','19/10/2022' );
+
+ALTER TABLE nounou ALTER COLUMN IdNounou RESTART WITH 4;
+
+
+INSERT INTO contrat (IdContrat,TarifHoraire, NbreHeuresEntretien, TarifRepas, IdParent,IdNounou,DateDeGarde,HeureArrivee,HeureDepart,Repas ) VALUES 
+  ( 1,5, '02:15:00',1,1, 1,'19/11/2022','03:15:00','02:15:00',TRUE ),
+  ( 2,5, '02:15:00',1,2, 2 ,'19/11/2022','03:15:00','02:15:00',TRUE),
+  ( 3,5, '02:15:00',1,3, 3 ,'19/11/2022','03:15:00','02:15:00',TRUE);
 
 ALTER TABLE contrat  ALTER COLUMN IdContrat RESTART WITH 4;
 
