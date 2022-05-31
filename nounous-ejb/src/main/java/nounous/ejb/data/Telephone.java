@@ -22,6 +22,10 @@ public class Telephone {
 	@Column( name = "idtelephone" )
 	private int				id;
 	
+	/*@ManyToOne
+	@JoinColumn( name = "idpersonne" )
+	private Personne		personne;*/
+	
 	@ManyToOne
 	@JoinColumn( name = "idpersonne" )
 	private Personne		personne;

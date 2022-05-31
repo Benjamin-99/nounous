@@ -49,6 +49,7 @@ public interface IMapperEjb {
 	
 	// Telephone
 	
+	//@Mapping( target="personne", ignore=true )
 	@Mapping( target="personne", ignore=true )
 	Telephone map( DtoTelephone source );
 	
@@ -60,6 +61,7 @@ public interface IMapperEjb {
     @AfterMapping
     public default void addBackReference(@MappingTarget Personne target) {
         for (Telephone telephone : target.getTelephones() ) {
+        	//telephone.setPersonne( target );
         	telephone.setPersonne( target );
         }
     }	

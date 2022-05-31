@@ -1,0 +1,87 @@
+package nounous.commun.dto;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+//import nounous.ejb.data.Contrat;
+
+
+@SuppressWarnings("serial")
+public class DtoParent implements Serializable {
+	
+	
+	// Champs
+	
+	private int				id;
+	
+	private String			nom;
+	
+	private String			prenom;
+	
+	//private Contrat			contrat;
+	
+	private DtoCategorie	categorie;
+	
+	private List<DtoTelephone>	telephones = new ArrayList<>();
+	
+	
+	// Constructeurs
+	
+	public DtoParent() {
+	}
+
+	public DtoParent(int id, String nom, String prenom, DtoCategorie categorie ) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+	//	this.contrat = contrat;
+		this.categorie = categorie;
+	}
+	
+	
+	
+	// Getters & setters
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public DtoCategorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(DtoCategorie categorie) {
+		this.categorie = categorie;
+	}
+
+	public List<DtoTelephone> getTelephones() {
+		return telephones;
+	}
+
+	public void setTelephones(List<DtoTelephone> telephones) {
+		this.telephones = telephones;
+	}
+
+}
