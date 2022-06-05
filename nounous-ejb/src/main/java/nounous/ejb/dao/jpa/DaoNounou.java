@@ -51,7 +51,7 @@ public class DaoNounou implements IDaoNounou {
 	@TransactionAttribute( NOT_SUPPORTED )
 	public Parent retrouver(int idParent) {
 		var graph = em.createEntityGraph( Parent.class );
-		graph.addAttributeNodes( "enfant" );
+		graph.addAttributeNodes( "enfants" );
 		graph.addAttributeNodes( "telephones" );
 		var props = new HashMap<String, Object>();
 		props.put( "javax.persistence.loadgraph", graph );

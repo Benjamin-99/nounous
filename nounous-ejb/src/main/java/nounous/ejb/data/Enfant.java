@@ -24,7 +24,7 @@ public class Enfant {
 	
 	@ManyToOne
 	@JoinColumn( name = "idparent")
-	private int 			idparent;
+	private Parent parent;
 	
 	@Column( name = "nomenfant" )
 	private String			nom;
@@ -35,7 +35,6 @@ public class Enfant {
 	@Column( name = "dateNaissance" )
 	private Date  			dateNaissance;
 	
-
 	//Constructeurs
 	
 	public Enfant() {
@@ -65,14 +64,15 @@ public class Enfant {
 	}
 
 
-	public int getIdparent() {
-		return idparent;
+	public Parent getParent() {
+		return parent;
 	}
 
 
-	public void setIdparent(int idparent) {
-		this.idparent = idparent;
+	public void setParent(Parent parent) {
+		this.parent = parent;
 	}
+
 
 	public String getNom() {
 		return nom;

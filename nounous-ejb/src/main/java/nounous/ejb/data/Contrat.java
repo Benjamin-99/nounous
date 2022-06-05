@@ -28,18 +28,15 @@ public class Contrat {
 	
 	@ManyToOne
 	@JoinColumn(name="idnounou")
-	private int			idNounou;
+	private Nounou		nounou;
     
 	@ManyToOne
 	@JoinColumn( name = "idparent" )
-	private int			idParent;
+	private 	Parent		parent;
 
 	@Column( name = "nbreheuresentretien" )
 	private Timer			nbreHeuresEntretien;
 
-	@Column( name = "dateNaissance" )
-	private Date  			dateNaissance;
-	
 	@Column( name = "dateDeGarde" )
 	private Date  			dateDeGarde;
 	
@@ -58,33 +55,38 @@ public class Contrat {
 	@Column( name = "tarifrepas" )
 	private double			tarifRepas;
 	
-
 	
 	// Constructeurs
 
 	public Contrat() {
 		super();
-	}
-    
+	}	
 	
-	/*   , */
-	public Contrat(Integer idContrat, int idNounou, int idParent, Date dateDeGarde, Timer heureArrivee, Timer heureDepart, boolean repas, Timer nbreHeuresEntretien, double tarifHoraire,  double tarifRepas) {
+	
+	public Contrat(Integer idContrat, Nounou nounou, Parent parent, Timer nbreHeuresEntretien, Date dateDeGarde,
+			double tarifHoraire, Timer heureArrivee, Timer heureDepart, boolean repas, double tarifRepas) {
 		super();
 		this.idContrat = idContrat;
-		this.idNounou = idNounou;
-		this.idParent = idParent;
+		this.nounou = nounou;
+		this.parent = parent;
 		this.nbreHeuresEntretien = nbreHeuresEntretien;
 		this.dateDeGarde = dateDeGarde;
+		this.tarifHoraire = tarifHoraire;
 		this.heureArrivee = heureArrivee;
 		this.heureDepart = heureDepart;
 		this.repas = repas;
-		this.tarifHoraire = tarifHoraire;
 		this.tarifRepas = tarifRepas;
 	}
+
+    
     
     
     
     // Getters & setters
+
+
+
+
 
 	public Integer getIdContrat() {
 		return idContrat;
@@ -94,25 +96,29 @@ public class Contrat {
 		this.idContrat = idContrat;
 	}
 
-	public int getIdNounou() {
-		return idNounou;
-	}
-
-	public void setIdNounou(int idNounou) {
-		this.idNounou = idNounou;
-	}
-
-	public int getIdParent() {
-		return idParent;
-	}
-
-	public void setIdParent(int idParent) {
-		this.idParent = idParent;
-	}
-
 	public Timer getNbreHeuresEntretien() {
 		return nbreHeuresEntretien;
 	}
+
+	public Nounou getNounou() {
+		return nounou;
+	}
+
+
+	public Parent getParent() {
+		return parent;
+	}
+
+
+	public void setNounou(Nounou nounou) {
+		this.nounou = nounou;
+	}
+
+
+	public void setParent(Parent parent) {
+		this.parent = parent;
+	}
+
 
 	public void setNbreHeuresEntretien(Timer nbreHeuresEntretien) {
 		this.nbreHeuresEntretien = nbreHeuresEntretien;

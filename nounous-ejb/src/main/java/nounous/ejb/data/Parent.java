@@ -6,13 +6,11 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -36,18 +34,20 @@ public class Parent {
 	@Column( name = "prenom" )
 	private String			prenom;
 	
-	@ManyToOne( fetch = FetchType.LAZY )
-	@JoinColumn( name = "idcontrat" )
-	private Contrat			contrat;
+	
+	
+	 @OneToMany( mappedBy="parent", cascade=CascadeType.ALL )
+	 private List<Contrat> contrat;
+
 	
 	@Column( name = "adresse" )
 	private String			adresse;
 
-/*	@OneToMany( mappedBy = "parent", cascade = ALL, orphanRemoval = true  )
+	@OneToMany( mappedBy = "parent", cascade = ALL, orphanRemoval = true  )
 	@OrderBy( "libelle" )
-	private List<Telephone>	telephones = new ArrayList<>();*/
+	private List<Telephone>	telephones = new ArrayList<>();
 	
-	@OneToMany( mappedBy = "idparent", cascade = ALL, orphanRemoval = true  )
+	@OneToMany( mappedBy = "parent", cascade = ALL, orphanRemoval = true  )
 	@OrderBy( "prenom" )
 	private List<Enfant>	enfants = new ArrayList<>();
 	
@@ -57,19 +57,22 @@ public class Parent {
 	public Parent() {
 	}
 
-	public Parent(int idparent, String nom, String prenom, Contrat contrat, String adress)
-			/*List<Telephone> telephones*/ {
+
+	public Parent(int idParent, String nom, String prenom, String adresse, List<Enfant> enfants) {
 		super();
-		this.idParent = idparent;
+		this.idParent = idParent;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.contrat = contrat;
 		this.adresse = adresse;
-		//this.telephones = telephones;
+		this.enfants = enfants;
 	}
+
 	
 	
 	// Getters & setters
+
+
+
 
 
 	public int getIdParent() {
@@ -87,6 +90,21 @@ public class Parent {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
+
+	public List<Contrat> getContrat() {
+		return contrat;
+	}
+
+
+
+
+	public void setContrat(List<Contrat> contrat) {
+		this.contrat = contrat;
+	}
+
+
+
 
 	public String getPrenom() {
 		return prenom;
@@ -96,13 +114,6 @@ public class Parent {
 		this.prenom = prenom;
 	}
 
-	public Contrat getContrat() {
-		return contrat;
-	}
-
-	public void setContrat(Contrat contrat) {
-		this.contrat = contrat;
-	}
 
 	public String getAdresse() {
 		return adresse;

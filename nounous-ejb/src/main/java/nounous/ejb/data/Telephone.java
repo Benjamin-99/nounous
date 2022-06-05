@@ -22,9 +22,9 @@ public class Telephone {
 	@Column( name = "idtelephone" )
 	private int				id;
 	
-	/*@ManyToOne
-	@JoinColumn( name = "idpersonne" )
-	private Personne		personne;*/
+	@ManyToOne
+	@JoinColumn( name = "idparent" )
+	private Parent		parent;
 	
 	@ManyToOne
 	@JoinColumn( name = "idpersonne" )

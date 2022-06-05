@@ -19,31 +19,31 @@ public class Contrat implements Serializable {
 	
 	private Integer			idContrat;
 	
-
-	@NotNull( message = "La date est obligatoire")
-	private Date		datedbcontrat;
      
 	@NotBlank( message = "Le prix doit être reneigné")
     @Min(value=0, message="Le prix ne peut pas être inférieur à 0")
 	private double tarifHoraire;
-	
+		
 	private Timer nbreHeuresEntretien;
 	
 	private double tarifRepas;
 	
 	private Parent parent;
 	
+	private Nounou nounou;
+	
+	
+
 	@NotNull( message = "La date est obligatoire")
 	private Date		DateDeGarde;
-     
 	
-	
-	private Timer heureArrivee;
+    private Timer heureArrivee;
 	
 	private Timer heureDepart;
 	
 	private boolean repas;
-	
+	@NotNull( message = "La date est obligatoire")
+
 	@NotBlank( message = "Le nom doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le nom : 25 car. maxi" )
 	private String			nomEnfant;
@@ -72,7 +72,6 @@ public class Contrat implements Serializable {
 			@NotNull(message = "La date de naissance est obligatoire") Date dateNaissance) {
 		super();
 		this.idContrat = idContrat;
-		this.datedbcontrat = datedbcontrat;
 		this.tarifHoraire = tarifHoraire;
 		this.nbreHeuresEntretien = nbreHeuresEntretien;
 		this.tarifRepas = tarifRepas;
@@ -100,10 +99,19 @@ public class Contrat implements Serializable {
 
 
 
+/**
+	 * @return the nounou
+	 */
+	public Nounou getNounou() {
+		return nounou;
+	}
 
-
-
-
+	/**
+	 * @param nounou the nounou to set
+	 */
+	public void setNounou(Nounou nounou) {
+		this.nounou = nounou;
+	}
 
 	/**
 	 * @param parent the parent to set
@@ -266,17 +274,6 @@ public class Contrat implements Serializable {
 
 
 
-
-	/**
-	 * @return the datedbcontrat
-	 */
-	public Date getDatedbcontrat() {
-		return datedbcontrat;
-	}
-
-
-
-
 	/**
 	 * @return the tarifHoraire
 	 */
@@ -313,18 +310,6 @@ public class Contrat implements Serializable {
 	public void setIdContrat(Integer idContrat) {
 		this.idContrat = idContrat;
 	}
-
-
-
-
-	/**
-	 * @param datedbcontrat the datedbcontrat to set
-	 */
-	public void setDatedbcontrat(Date datedbcontrat) {
-		this.datedbcontrat = datedbcontrat;
-	}
-
-
 
 
 	/**

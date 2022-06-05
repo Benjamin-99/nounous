@@ -2,14 +2,17 @@ package nounous.ejb.data;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -27,7 +30,7 @@ public class Nounou {
 	
 	@ManyToOne
 	@JoinColumn(name="idcompte")
-	private int			idCompte;
+	private Compte		compte;
     
 	@Column( name = "nom" )
 	private String			nom;
@@ -40,7 +43,9 @@ public class Nounou {
 
 	@Column( name = "adresse" )
 	private String  		adresse;
-
+	
+	@OneToMany( mappedBy="parent", cascade=CascadeType.ALL )
+	 private List<Contrat> contrat;
 	
 	// Constructeurs
 
@@ -70,6 +75,23 @@ public class Nounou {
     
     public String getNom() {
 		return nom;
+	}
+    
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+	public List<Contrat> getContrat() {
+		return contrat;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
+	public void setContrat(List<Contrat> contrat) {
+		this.contrat = contrat;
 	}
 
 	public void setNom(String nom) {

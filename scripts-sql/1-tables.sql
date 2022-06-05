@@ -76,7 +76,6 @@ CREATE TABLE telephone (
 	Numero			VARCHAR(25)		NOT NULL,
 	FOREIGN KEY (IdPersonne) REFERENCES personne (IdPersonne),
     FOREIGN KEY(IdParent) REFERENCES parent(IdParent),
-    FOREIGN KEY(IdNounou) REFERENCES nounou(IdNounou),
 	PRIMARY KEY (IdTelephone)
 );
 
