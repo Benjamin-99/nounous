@@ -25,24 +25,31 @@ public class Nounou implements Serializable  {
 	
 	private String		adresse;
 	
+	private String		telephone;
+	
 	
 	// Constructeurs
 	
 	public Nounou() {
 	}
-		public Nounou(Integer idNounou,
+		
+	
+	public Nounou(Integer idNounou,
 			@NotBlank(message = "Le pseudo doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le pseuo : 25 car. maxi") String nom,
 			@NotBlank(message = "Le pseudo doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le pseuo : 25 car. maxi") String prenom,
-			String adresse) {
+			String adresse, String telephone) {
 		super();
 		this.idNounou = idNounou;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
+		this.telephone = telephone;
 	}
 	
-	
 	// Getters & setters
+
+
+
 
 
 
@@ -54,6 +61,16 @@ public class Nounou implements Serializable  {
 		public Integer getIdNounou() {
 			return idNounou;
 		}
+		public String getTelephone() {
+		return telephone;
+	}
+
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+
 		/**
 		 * @return the nom
 		 */

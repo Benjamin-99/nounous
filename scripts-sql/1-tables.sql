@@ -15,7 +15,6 @@ CREATE TABLE compte(
    Email VARCHAR(25) NOT NULL,
    Motdepasse VARCHAR(250) NOT NULL,
    Pseudo VARCHAR(25) NOT NULL,
-   Role VARCHAR(50) NOT NULL,
    PRIMARY KEY(IdCompte)
  
 );

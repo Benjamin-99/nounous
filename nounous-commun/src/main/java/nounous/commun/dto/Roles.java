@@ -11,16 +11,18 @@ public final class Roles {
 	
 	public static final String ADMINISTRATEUR	= "ADMINISTRATEUR";
 	public static final String UTILISATEUR		= "UTILISATEUR";
-	
+	public static final String PARENT		= "PARENT";
 	
 	private static final List<String>	roles = Collections.unmodifiableList( Arrays.asList( 
 			ADMINISTRATEUR,			
-			UTILISATEUR
+			UTILISATEUR,
+			PARENT
 	) );
 
 	private static final String[]	 	libellés = new String[] {
 			"Administrateur",
 			"Utilisateur",
+			"Parent"
 	};
 	
 	

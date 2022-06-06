@@ -12,7 +12,7 @@ public class Parent implements Serializable  {
 	
 	// Champs
 	
-	Integer		idNounou;
+	Integer		idParent;
 	
 	@NotBlank( message = "Le pseudo doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le pseuo : 25 car. maxi" )
@@ -30,12 +30,12 @@ public class Parent implements Serializable  {
 	
 	public Parent() {
 	}
-		public Parent(Integer idNounou,
+		public Parent(Integer idParent,
 			@NotBlank(message = "Le pseudo doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le pseuo : 25 car. maxi") String nom,
 			@NotBlank(message = "Le pseudo doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le pseuo : 25 car. maxi") String prenom,
 			String adresse) {
 		super();
-		this.idNounou = idNounou;
+		this.idParent = idParent;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
@@ -49,10 +49,10 @@ public class Parent implements Serializable  {
 
 
 	/**
-		 * @return the idNounou
+		 * @return the idParent
 		 */
-		public Integer getIdNounou() {
-			return idNounou;
+		public Integer getidParent() {
+			return idParent;
 		}
 		/**
 		 * @return the nom
@@ -73,10 +73,10 @@ public class Parent implements Serializable  {
 			return adresse;
 		}
 		/**
-		 * @param idNounou the idNounou to set
+		 * @param idParent the idParent to set
 		 */
-		public void setIdNounou(Integer idNounou) {
-			this.idNounou = idNounou;
+		public void setidParent(Integer idParent) {
+			this.idParent = idParent;
 		}
 		/**
 		 * @param nom the nom to set
@@ -102,7 +102,7 @@ public class Parent implements Serializable  {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idNounou);
+		return Objects.hash(idParent);
 	}
 
 	@Override
@@ -114,7 +114,7 @@ public class Parent implements Serializable  {
 		if (getClass() != obj.getClass())
 			return false;
 		var other = (Parent) obj;
-		return Objects.equals(idNounou, other.idNounou);
+		return Objects.equals(idParent, other.idParent);
 	}
 	
 }

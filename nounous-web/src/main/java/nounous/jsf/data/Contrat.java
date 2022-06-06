@@ -28,12 +28,6 @@ public class Contrat implements Serializable {
 	
 	private double tarifRepas;
 	
-	private Parent parent;
-	
-	private Nounou nounou;
-	
-	
-
 	@NotNull( message = "La date est obligatoire")
 	private Date		DateDeGarde;
 	
@@ -75,7 +69,6 @@ public class Contrat implements Serializable {
 		this.tarifHoraire = tarifHoraire;
 		this.nbreHeuresEntretien = nbreHeuresEntretien;
 		this.tarifRepas = tarifRepas;
-		this.parent = parent;
 		DateDeGarde = dateDeGarde;
 		this.heureArrivee = heureArrivee;
 		this.heureDepart = heureDepart;
@@ -89,37 +82,6 @@ public class Contrat implements Serializable {
 
 
 	// Getters & setters
-
-/**
-	 * @return the parent
-	 */
-	public Parent getParent() {
-		return parent;
-	}
-
-
-
-/**
-	 * @return the nounou
-	 */
-	public Nounou getNounou() {
-		return nounou;
-	}
-
-	/**
-	 * @param nounou the nounou to set
-	 */
-	public void setNounou(Nounou nounou) {
-		this.nounou = nounou;
-	}
-
-	/**
-	 * @param parent the parent to set
-	 */
-	public void setParent(Parent parent) {
-		this.parent = parent;
-	}
-
 
 
 

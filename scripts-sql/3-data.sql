@@ -11,10 +11,10 @@ DELETE FROM compte;
 
 -- Insère les données
 
-INSERT INTO compte (IdCompte, Pseudo, MotDePasse, Email,Role ) VALUES 
-  (1, 'geek', 'geek', 'geek@3il.fr','ADMINISTRATEUR' ),
-  (2, 'chef', 'chef', 'chef@3il.fr','UTILISATEUR'  ),
-  (3, 'job', 'job', 'job@3il.fr','UTILISATEUR'  );
+INSERT INTO compte (IdCompte, Pseudo, MotDePasse, Email) VALUES 
+  (1, 'geek', 'geek', 'geek@3il.fr' ),
+  (2, 'chef', 'chef', 'chef@3il.fr'),
+  (3, 'job', 'job', 'job@3il.fr');
 
 ALTER TABLE compte ALTER COLUMN IdCompte RESTART WITH 4;
 

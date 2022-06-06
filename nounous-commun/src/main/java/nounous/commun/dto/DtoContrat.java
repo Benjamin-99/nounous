@@ -64,6 +64,14 @@ public class DtoContrat implements Serializable {
 		this.idContrat = idContrat;
 	}
 
+	public DtoParent getParent() {
+		return parent;
+	}
+
+	public void setParent(DtoParent parent) {
+		this.parent = parent;
+	}
+
 	/**
 	 * @return the dateDeGarde
 	 */

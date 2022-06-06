@@ -17,9 +17,6 @@ public class Enfant implements Serializable  {
 	private int				idEnfant;
 	
 	@NotNull
-	private int 			idparent;
-	
-	@NotNull
 	private String			nom;
 
 	@NotNull
@@ -35,7 +32,6 @@ public class Enfant implements Serializable  {
 			@NotNull Date dateNaissance) {
 		super();
 		this.idEnfant = idEnfant;
-		this.idparent = idparent;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
@@ -63,14 +59,6 @@ public class Enfant implements Serializable  {
 		return idEnfant;
 	}
 
-
-
-	/**
-	 * @return the idparent
-	 */
-	public int getIdparent() {
-		return idparent;
-	}
 
 
 
@@ -106,15 +94,6 @@ public class Enfant implements Serializable  {
 	 */
 	public void setIdEnfant(int idEnfant) {
 		this.idEnfant = idEnfant;
-	}
-
-
-
-	/**
-	 * @param idparent the idparent to set
-	 */
-	public void setIdparent(int idparent) {
-		this.idparent = idparent;
 	}
 
 
