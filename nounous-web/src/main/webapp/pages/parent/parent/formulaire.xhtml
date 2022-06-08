@@ -46,6 +46,16 @@
 					<br /><h:message for="prenom" errorClass="error"/>
 				</td>
 			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="adresse">Adresse :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="adresse" size="50" 
+						value="#{modelParent.courant.adresse}" />
+					<br /><h:message for="adresse" errorClass="error"/>
+				</td>
+			</tr>
 		</table>
 		
 		<br />
