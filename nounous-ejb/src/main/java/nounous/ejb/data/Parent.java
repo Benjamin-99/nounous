@@ -49,6 +49,8 @@ public class Parent {
 
 	@OneToOne  @JoinColumn( name="idCompte" )
 	private Compte compte;
+	@OneToMany( mappedBy = "parent", cascade = ALL, orphanRemoval = true  )
+	private List<Contrat> contrats;
 	
 	// Constructeurs
 	
@@ -100,7 +102,7 @@ public class Parent {
 		this.compte = compte;
 	}
 
-	private List<Contrat> contrats;
+	
 
 
 

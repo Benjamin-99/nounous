@@ -2,9 +2,8 @@ package nounous.ejb.data;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.sql.Time;
 import java.util.Date;
-import java.util.Timer;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +34,7 @@ public class Contrat {
 	private 	Parent		parent;
 
 	@Column( name = "nbreheuresentretien" )
-	private Timer			nbreHeuresEntretien;
+	private Time			nbreHeuresEntretien;
 
 	@Column( name = "dateDeGarde" )
 	private Date  			dateDeGarde;
@@ -44,10 +43,10 @@ public class Contrat {
 	private double			tarifHoraire;
 	
 	@Column( name = "heureArrivee" )
-	private Timer			heureArrivee;
+	private Time			heureArrivee;
 	
 	@Column( name = "heureDepart" )
-	private Timer			heureDepart;
+	private Time			heureDepart;
 	
 	@Column( name = "repas" )
 	private boolean			repas;
@@ -63,12 +62,14 @@ public class Contrat {
 	}	
 	
 	
-	public Contrat(Integer idContrat, Nounou nounou, Parent parent, Timer nbreHeuresEntretien, Date dateDeGarde,
-			double tarifHoraire, Timer heureArrivee, Timer heureDepart, boolean repas, double tarifRepas) {
+
+
+    
+    
+    public Contrat(Integer idContrat,Time nbreHeuresEntretien, Date dateDeGarde,
+			double tarifHoraire, Time heureArrivee, Time heureDepart, boolean repas, double tarifRepas) {
 		super();
 		this.idContrat = idContrat;
-		this.nounou = nounou;
-		this.parent = parent;
 		this.nbreHeuresEntretien = nbreHeuresEntretien;
 		this.dateDeGarde = dateDeGarde;
 		this.tarifHoraire = tarifHoraire;
@@ -78,11 +79,14 @@ public class Contrat {
 		this.tarifRepas = tarifRepas;
 	}
 
-    
-    
-    
-    
-    // Getters & setters
+
+
+
+
+
+
+
+	// Getters & setters
 
 
 
@@ -96,9 +100,7 @@ public class Contrat {
 		this.idContrat = idContrat;
 	}
 
-	public Timer getNbreHeuresEntretien() {
-		return nbreHeuresEntretien;
-	}
+	
 
 	public Nounou getNounou() {
 		return nounou;
@@ -120,9 +122,6 @@ public class Contrat {
 	}
 
 
-	public void setNbreHeuresEntretien(Timer nbreHeuresEntretien) {
-		this.nbreHeuresEntretien = nbreHeuresEntretien;
-	}
 
 	public Date getDateDeGarde() {
 		return dateDeGarde;
@@ -140,21 +139,61 @@ public class Contrat {
 		this.tarifHoraire = tarifHoraire;
 	}
 
-	public Timer getHeureArrivee() {
+	
+
+	public Time getNbreHeuresEntretien() {
+		return nbreHeuresEntretien;
+	}
+
+
+
+
+
+
+	public Time getHeureArrivee() {
 		return heureArrivee;
 	}
 
-	public void setHeureArrivee(Timer heureArrivee) {
-		this.heureArrivee = heureArrivee;
-	}
 
-	public Timer getHeureDepart() {
+
+
+
+
+	public Time getHeureDepart() {
 		return heureDepart;
 	}
 
-	public void setHeureDepart(Timer heureDepart) {
+
+
+
+
+
+	public void setNbreHeuresEntretien(Time nbreHeuresEntretien) {
+		this.nbreHeuresEntretien = nbreHeuresEntretien;
+	}
+
+
+
+
+
+
+	public void setHeureArrivee(Time heureArrivee) {
+		this.heureArrivee = heureArrivee;
+	}
+
+
+
+
+
+
+	public void setHeureDepart(Time heureDepart) {
 		this.heureDepart = heureDepart;
 	}
+
+
+
+
+
 
 	public boolean isRepas() {
 		return repas;
@@ -173,7 +212,7 @@ public class Contrat {
 	}
 
 
-	// soString()
+	// toString()
 
 
 	

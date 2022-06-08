@@ -9,10 +9,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import nounous.commun.dto.DtoCompte;
+import nounous.commun.dto.DtoEnfant;
 import nounous.commun.exception.ExceptionValidation;
-import nounous.commun.service.IServiceCompte;
-import nounous.jsf.data.Compte;
+import nounous.commun.service.IServiceEnfant;
+import nounous.jsf.data.Enfant;
 import nounous.jsf.data.mapper.IMapper;
 import nounous.jsf.util.UtilJsf;
 
@@ -25,12 +25,12 @@ public class ModelEnfant implements Serializable {
 	
 	// Champs
 	
-	private List<Compte>	liste;
+	private List<Enfant>	liste;
 	
-	private Compte			courant;
+	private Enfant			courant;
 	
 	@EJB
-	private IServiceCompte	serviceCompte;
+	private IServiceEnfant	serviceEnfant;
 	
 	@Inject
 	private IMapper			mapper;
@@ -38,19 +38,19 @@ public class ModelEnfant implements Serializable {
 	
 	// Getters 
 	
-	public List<Compte> getListe() {
+	public List<Enfant> getListe() {
 		if ( liste == null ) {
 			liste = new ArrayList<>();
-			for ( DtoCompte dto : serviceCompte.listerTout() ) {
+			for ( DtoEnfant dto : serviceEnfant.listerTout() ) {
 				liste.add( mapper.map( dto ) );
 			}
 		}
 		return liste;
 	}
 	
-		public Compte getCourant() {
+		public Enfant getCourant() {
 			if ( courant == null ) {
-				courant = new Compte();
+				courant = new Enfant();
 			}
 			return courant;
 		}
@@ -60,9 +60,9 @@ public class ModelEnfant implements Serializable {
 	
 	public String actualiserCourant() {
 		if ( courant != null ) {
-			DtoCompte dto = serviceCompte.retrouver( courant.getId() ); 
+			DtoEnfant dto = serviceEnfant.retrouver( courant.getIdEnfant() ); 
 			if ( dto == null ) {
-				UtilJsf.messageError( "Le compte demandé n'existe pas" );
+				UtilJsf.messageError( "Le enfant demandé n'existe pas" );
 				return "test/liste";
 			} else {
 				courant = mapper.map( dto );
@@ -76,10 +76,10 @@ public class ModelEnfant implements Serializable {
 	
 	public String validerMiseAJour() {
 		try {
-			if ( courant.getId() == null) {
-				serviceCompte.inserer( mapper.map(courant) );
+			if ( courant.getIdEnfant() == null) {
+				serviceEnfant.inserer( mapper.map(courant) );
 			} else {
-				serviceCompte.modifier( mapper.map(courant) );
+				serviceEnfant.modifier( mapper.map(courant) );
 			}
 			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
 			return "liste";
@@ -89,9 +89,9 @@ public class ModelEnfant implements Serializable {
 		}
 	}
 	
-	public String supprimer( Compte item ) {
+	public String supprimer( Enfant item ) {
 		try {
-			serviceCompte.supprimer( item.getId() );
+			serviceEnfant.supprimer( item.getIdEnfant() );
 			liste.remove(item);
 			UtilJsf.messageInfo( "Suppression effectuée avec succès." );
 		} catch (ExceptionValidation e) {

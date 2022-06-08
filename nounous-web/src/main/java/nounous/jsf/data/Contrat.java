@@ -1,10 +1,9 @@
 package nounous.jsf.data;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 import java.util.Objects;
-import java.util.Timer;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -24,16 +23,16 @@ public class Contrat implements Serializable {
     @Min(value=0, message="Le prix ne peut pas être inférieur à 0")
 	private double tarifHoraire;
 		
-	private Timer nbreHeuresEntretien;
+	private Time nbreHeuresEntretien;
 	
 	private double tarifRepas;
 	
 	@NotNull( message = "La date est obligatoire")
 	private Date		DateDeGarde;
 	
-    private Timer heureArrivee;
+    private Time heureArrivee;
 	
-	private Timer heureDepart;
+	private Time heureDepart;
 	
 	private boolean repas;
 	@NotNull( message = "La date est obligatoire")
@@ -61,12 +60,11 @@ public class Contrat implements Serializable {
 	public Contrat() {
 	}
 	
-	public Contrat(Integer idContrat, @NotNull(message = "La date est obligatoire") Date datedbcontrat,
+	public Contrat(Integer idContrat,
 			@NotBlank(message = "Le prix doit être reneigné") @Min(value = 0, message = "Le prix ne peut pas être inférieur à 0") double tarifHoraire,
-			Timer nbreHeuresEntretien, double tarifRepas, Parent parent,
-			@NotNull(message = "La date est obligatoire") Date dateDeGarde, Timer heureArrivee, Timer heureDepart,
-			boolean repas,
-			@NotBlank(message = "Le nom doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le nom : 25 car. maxi") String nomEnfant,
+			Time nbreHeuresEntretien, double tarifRepas, @NotNull(message = "La date est obligatoire") Date dateDeGarde,
+			Time heureArrivee, Time heureDepart, boolean repas,
+			@NotNull(message = "La date est obligatoire") @NotBlank(message = "Le nom doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le nom : 25 car. maxi") String nomEnfant,
 			@NotBlank(message = "Le prénom doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le prénom : 25 car. maxi") String prenomEnfant,
 			@NotNull(message = "La date de naissance est obligatoire") Date dateNaissance) {
 		super();
@@ -92,6 +90,11 @@ public class Contrat implements Serializable {
 
 
 
+
+
+
+
+
 	/**
 	 * @return the dateDeGarde
 	 */
@@ -101,6 +104,30 @@ public class Contrat implements Serializable {
 
 
 
+
+	public Time getNbreHeuresEntretien() {
+		return nbreHeuresEntretien;
+	}
+
+	public Time getHeureArrivee() {
+		return heureArrivee;
+	}
+
+	public Time getHeureDepart() {
+		return heureDepart;
+	}
+
+	public void setNbreHeuresEntretien(Time nbreHeuresEntretien) {
+		this.nbreHeuresEntretien = nbreHeuresEntretien;
+	}
+
+	public void setHeureArrivee(Time heureArrivee) {
+		this.heureArrivee = heureArrivee;
+	}
+
+	public void setHeureDepart(Time heureDepart) {
+		this.heureDepart = heureDepart;
+	}
 
 	public Parent getParent() {
 		return parent;
@@ -118,22 +145,9 @@ public class Contrat implements Serializable {
 		this.nounou = nounou;
 	}
 
-	/**
-	 * @return the heureArrivee
-	 */
-	public Timer getHeureArrivee() {
-		return heureArrivee;
-	}
 
 
 
-
-	/**
-	 * @return the heureDepart
-	 */
-	public Timer getHeureDepart() {
-		return heureDepart;
-	}
 
 
 
@@ -186,24 +200,6 @@ public class Contrat implements Serializable {
 	}
 
 
-
-
-	/**
-	 * @param heureArrivee the heureArrivee to set
-	 */
-	public void setHeureArrivee(Timer heureArrivee) {
-		this.heureArrivee = heureArrivee;
-	}
-
-
-
-
-	/**
-	 * @param heureDepart the heureDepart to set
-	 */
-	public void setHeureDepart(Timer heureDepart) {
-		this.heureDepart = heureDepart;
-	}
 
 
 
@@ -267,13 +263,6 @@ public class Contrat implements Serializable {
 
 
 
-	/**
-	 * @return the nbreHeuresEntretien
-	 */
-	public Timer getNbreHeuresEntretien() {
-		return nbreHeuresEntretien;
-	}
-
 
 
 
@@ -303,14 +292,6 @@ public class Contrat implements Serializable {
 	}
 
 
-
-
-	/**
-	 * @param nbreHeuresEntretien the nbreHeuresEntretien to set
-	 */
-	public void setNbreHeuresEntretien(Timer nbreHeuresEntretien) {
-		this.nbreHeuresEntretien = nbreHeuresEntretien;
-	}
 
 
 

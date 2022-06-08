@@ -8,6 +8,7 @@ import java.util.Objects;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+
 @SuppressWarnings("serial")
 public class Nounou implements Serializable  {
 
@@ -23,12 +24,12 @@ public class Nounou implements Serializable  {
 	@NotBlank( message = "Le pseudo doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le pseuo : 25 car. maxi" )
 	private String		prenom;
-
 	
 	private String		adresse;
 	
 	private List<Telephone>	telephones = new ArrayList<>();	
 	
+	private List<Contrat> contrats;
 	// Constructeurs
 	
 	public Nounou() {

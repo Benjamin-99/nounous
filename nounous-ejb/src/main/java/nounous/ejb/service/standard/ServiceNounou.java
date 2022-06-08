@@ -23,6 +23,7 @@ import nounous.ejb.data.mapper.IMapperEjb;
 public class ServiceNounou implements IServiceNounou {
 
 	// Champs
+	@SuppressWarnings("cdi-ambiguous-dependency")
 	@Inject
 	private IMapperEjb mapper;
 	@Inject

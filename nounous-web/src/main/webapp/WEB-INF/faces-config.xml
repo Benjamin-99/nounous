@@ -6,7 +6,7 @@
   <navigation-case>
    <from-outcome>connexion</from-outcome>
    <to-view-id>/connexion.xhtml</to-view-id>
-   <redirect />
+   <redirect/>
   </navigation-case>
   <navigation-case>
    <from-outcome>catégories</from-outcome>
@@ -23,6 +23,18 @@
   <navigation-case>
    <from-outcome>info</from-outcome>
    <to-view-id>/pages/info.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>nounou</from-outcome>
+   <to-view-id>/pages/user/nounou/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>parents</from-outcome>
+   <to-view-id>/pages/parent/parent/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>enfants</from-outcome>
+   <to-view-id>/pages/parent/enfant/liste.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application/>

@@ -72,16 +72,16 @@ INSERT INTO contrat (IdContrat,TarifHoraire, NbreHeuresEntretien, TarifRepas, Id
 
 ALTER TABLE contrat  ALTER COLUMN IdContrat RESTART WITH 4;
 
-INSERT INTO telephone (IdTelephone, IdPersonne, IdParent, Libelle, Numero ) VALUES 
-  ( 11,1,1, 'Portable', '06 11 11 11 11' ),
-  ( 12 ,1,1, 'Fax', '05 55 99 11 11' ),
-  ( 13,1,1, 'Bureau', '05 55 11 11 11' ),
-  ( 21,2,2,  'Portable', '06 22 22 22 22' ),
-  ( 22,2,2, 'Fax', '05 55 99 22 22' ),
-  ( 23,2,2, 'Bureau', '05 55 22 22 22' ),
-  ( 31,3,3, 'Portable', '06 33 33 33 33' ),
-  ( 32, 3,3,'Fax', '05 55 99 33 33' ),
-  ( 33,3,3, 'Bureau', '05 55 33 33 33' );
+INSERT INTO telephone (IdTelephone, IdPersonne, IdParent, IdNounou,Libelle, Numero ) VALUES 
+  ( 11,1,1,1, 'Portable', '06 11 11 11 11' ),
+  ( 12 ,1,1,1, 'Fax', '05 55 99 11 11' ),
+  ( 13,1,1,1, 'Bureau', '05 55 11 11 11' ),
+  ( 21,2,2,2,  'Portable', '06 22 22 22 22' ),
+  ( 22,2,2,2, 'Fax', '05 55 99 22 22' ),
+  ( 23,2,2,2, 'Bureau', '05 55 22 22 22' ),
+  ( 31,3,3,3, 'Portable', '06 33 33 33 33' ),
+  ( 32, 3,3,3,'Fax', '05 55 99 33 33' ),
+  ( 33,3,3,3, 'Bureau', '05 55 33 33 33' );
 
 ALTER TABLE telephone ALTER COLUMN IdTelephone RESTART WITH 100;
  

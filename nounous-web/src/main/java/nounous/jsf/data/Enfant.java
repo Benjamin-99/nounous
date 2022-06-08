@@ -13,8 +13,7 @@ public class Enfant implements Serializable  {
 	// Champs
 	
 	
-	@NotNull
-	private int				idEnfant;
+	private Integer			idEnfant;
 	
 	@NotNull
 	private String			nom;
@@ -49,15 +48,10 @@ public class Enfant implements Serializable  {
 	// Getters & setters
 
 
-
-
-	
-
-
 	/**
 	 * @return the idEnfant
 	 */
-	public int getIdEnfant() {
+	public Integer getIdEnfant() {
 		return idEnfant;
 	}
 
@@ -106,7 +100,7 @@ public class Enfant implements Serializable  {
 	/**
 	 * @param idEnfant the idEnfant to set
 	 */
-	public void setIdEnfant(int idEnfant) {
+	public void setIdEnfant(Integer idEnfant) {
 		this.idEnfant = idEnfant;
 	}
 

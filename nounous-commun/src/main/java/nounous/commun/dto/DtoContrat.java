@@ -1,9 +1,8 @@
 package nounous.commun.dto;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
-import java.util.Timer;
-
 @SuppressWarnings("serial")
 public class DtoContrat implements Serializable {
 
@@ -17,15 +16,15 @@ public class DtoContrat implements Serializable {
 
 	private double tarifHoraire;
 
-	private Timer nbreHeuresEntretien;
+	private Time nbreHeuresEntretien;
 
 	private double tarifRepas;
 
 	private Date DateDeGarde;
 	
-	private Timer heureArrivee;
+	private Time heureArrivee;
 
-	private Timer heureDepart;
+	private Time heureDepart;
 
 	private boolean repas;
 
@@ -36,9 +35,9 @@ public class DtoContrat implements Serializable {
 	private Date dateNaissance;
 	
 	// Constructeurs
-	public DtoContrat(int idContrat, Date datedbcontrat, double tarifHoraire, Timer nbreHeuresEntretien,
-			double tarifRepas, Date dateDeGarde,  Timer heureArrivee,
-			Timer heureDepart, boolean repas, String nomEnfant, String prenomEnfant, Date dateNaissance) {
+public DtoContrat(int idContrat, Date datedbcontrat, double tarifHoraire, Time nbreHeuresEntretien,
+			double tarifRepas, Date dateDeGarde, Time heureArrivee, Time heureDepart, boolean repas, String nomEnfant,
+			String prenomEnfant, Date dateNaissance) {
 		super();
 		this.idContrat = idContrat;
 		this.datedbcontrat = datedbcontrat;
@@ -53,7 +52,6 @@ public class DtoContrat implements Serializable {
 		this.prenomEnfant = prenomEnfant;
 		this.dateNaissance = dateNaissance;
 	}
-	
 
 	// Getters & setters
 	/**
@@ -64,6 +62,8 @@ public class DtoContrat implements Serializable {
 	}
 
 
+	
+
 	/**
 	 * @return the dateDeGarde
 	 */
@@ -71,19 +71,6 @@ public class DtoContrat implements Serializable {
 		return DateDeGarde;
 	}
 
-	/**
-	 * @return the heureArrivee
-	 */
-	public Timer getHeureArrivee() {
-		return heureArrivee;
-	}
-
-	/**
-	 * @return the heureDepart
-	 */
-	public Timer getHeureDepart() {
-		return heureDepart;
-	}
 
 	/**
 	 * @return the repas
@@ -120,19 +107,6 @@ public class DtoContrat implements Serializable {
 		DateDeGarde = dateDeGarde;
 	}
 
-	/**
-	 * @param heureArrivee the heureArrivee to set
-	 */
-	public void setHeureArrivee(Timer heureArrivee) {
-		this.heureArrivee = heureArrivee;
-	}
-
-	/**
-	 * @param heureDepart the heureDepart to set
-	 */
-	public void setHeureDepart(Timer heureDepart) {
-		this.heureDepart = heureDepart;
-	}
 
 	/**
 	 * @param repas the repas to set
@@ -169,6 +143,30 @@ public class DtoContrat implements Serializable {
 		return idContrat;
 	}
 
+	public Time getNbreHeuresEntretien() {
+		return nbreHeuresEntretien;
+	}
+
+	public Time getHeureArrivee() {
+		return heureArrivee;
+	}
+
+	public Time getHeureDepart() {
+		return heureDepart;
+	}
+
+	public void setNbreHeuresEntretien(Time nbreHeuresEntretien) {
+		this.nbreHeuresEntretien = nbreHeuresEntretien;
+	}
+
+	public void setHeureArrivee(Time heureArrivee) {
+		this.heureArrivee = heureArrivee;
+	}
+
+	public void setHeureDepart(Time heureDepart) {
+		this.heureDepart = heureDepart;
+	}
+
 	/**
 	 * @return the datedbcontrat
 	 */
@@ -181,13 +179,6 @@ public class DtoContrat implements Serializable {
 	 */
 	public double getTarifHoraire() {
 		return tarifHoraire;
-	}
-
-	/**
-	 * @return the nbreHeuresEntretien
-	 */
-	public Timer getNbreHeuresEntretien() {
-		return nbreHeuresEntretien;
 	}
 
 	/**
@@ -218,12 +209,6 @@ public class DtoContrat implements Serializable {
 		this.tarifHoraire = tarifHoraire;
 	}
 
-	/**
-	 * @param nbreHeuresEntretien the nbreHeuresEntretien to set
-	 */
-	public void setNbreHeuresEntretien(Timer nbreHeuresEntretien) {
-		this.nbreHeuresEntretien = nbreHeuresEntretien;
-	}
 
 	/**
 	 * @param tarifRepas the tarifRepas to set

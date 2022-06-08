@@ -8,6 +8,7 @@ import java.util.Objects;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+
 @SuppressWarnings("serial")
 public class Parent implements Serializable  {
 
@@ -30,11 +31,15 @@ public class Parent implements Serializable  {
 
 	private List<Telephone>	telephones = new ArrayList<>();
 	
+	private List<Enfant>	enfants = new ArrayList<>();
 	
+	private Compte compte;
 	// Constructeurs
 	
 	public Parent() {
+		
 	}
+	
 		public Parent(Integer idParent,
 			@NotBlank(message = "Le pseudo doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le pseuo : 25 car. maxi") String nom,
 			@NotBlank(message = "Le pseudo doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le pseuo : 25 car. maxi") String prenom,
@@ -49,16 +54,33 @@ public class Parent implements Serializable  {
 	
 	// Getters & setters
 
-
-
-
-
 	/**
 		 * @return the idParent
 		 */
 		public Integer getidParent() {
 			return idParent;
 		}
+
+		public List<Enfant> getEnfants() {
+		return enfants;
+	}
+
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+
+	public void setEnfants(List<Enfant> enfants) {
+		this.enfants = enfants;
+	}
+
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
+
 		public Integer getIdParent() {
 		return idParent;
 	}
