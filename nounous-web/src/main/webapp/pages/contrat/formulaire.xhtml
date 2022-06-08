@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/template/page-standard.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets">>
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{modelContrat.courant.id}" />
+		<f:viewAction action="#{modelContrat.actualiserCourant()}" />
+	</f:metadata>
+
+    <ui:define name="titre">Contrat</ui:define>
+
+    <ui:define name="contenu">
+	
+	<h:form>
+		<table class="form">
+			<tr>
+				<td>
+					<h:outputLabel for="idContrat">Id :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="idcontrat" size="5" readonly="true" value="#{modelContrat.courant.idcontrat}" />
+					<br /><h:message for="idcontrat" errorClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="tarifhoraire">Tarif horaire :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="nom" size="25"	value="#{modelContrat.courant.tarifhoraire}" />
+					<br /><h:message for="tarifhoraire" errorClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="nbreheuresentretien">Nombre d'heures d'entretien :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="prenom" size="25" 
+						value="#{modelContrat.courant.nbreheuresentretien}" />
+					<br /><h:message for="prenom" errorClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="categorie">Categorie :</h:outputLabel>				
+				</td>
+				<td>
+					<h:selectOneMenu id="categorie" 
+						value="#{modelContrat.courant.categorie}" 
+						converter="#{converterCategorie}">
+						<f:selectItems value="#{modelCategorie.liste}"  />
+					</h:selectOneMenu>
+					<br /><h:message for="categorie" errorClass="error"/>
+				</td>
+			</tr>
+		</table>
+		
+		<br />
+		<h:dataTable id="tableTelephones" styleClass="liste" 
+			value="#{modelContrat.courant.telephones}" 
+			var="telephone" 
+			style="width:350px">
+		
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+				#{telephone.id}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Libellé" />
+				</f:facet>
+				<h:inputText id="telLib" value="#{telephone.libelle}" />
+				<br /><h:message for="telLib" errorClass="error"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Numéro" />
+				</f:facet>
+				<h:inputText id="telNum" value="#{telephone.numero}" />
+				<br /><h:message for="telNum" errorClass="error"/>
+			</h:column>
+			
+			<h:column>
+				<h:commandButton value="Supprimer" 
+					action="#{modelContrat.supprimerTelephone(telephone)}"
+					immediate="true" 
+					image="#{ resource['images:supprimer.png'] }" 
+					title="Supprimer"
+					styleClass="image-action"
+				>
+					<f:ajax render="@form" execute="@form" />
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+
+		<br /> 
+		<h:commandButton value="Ajouter téléphone" 
+			action="#{modelContrat.ajouterTelephone()}" >
+			<f:ajax render="tableTelephones" execute="tableTelephones" />
+		</h:commandButton>
+		<h:commandButton value="Valider" 
+			action="#{modelContrat.validerMiseAJour()}">
+		</h:commandButton>
+		<h:button value="Retour" outcome="contrats" />
+	</h:form>
+
+	</ui:define>
+
+</ui:composition>
