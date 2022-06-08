@@ -6,11 +6,11 @@
      xmlns:ui="http://java.sun.com/jsf/facelets">>
 
 	<f:metadata>
-		<f:viewParam name="id" value="#{modelPersonne.courant.id}" />
-		<f:viewAction action="#{modelPersonne.actualiserCourant()}" />
+		<f:viewParam name="id" value="#{modelParent.courant.id}" />
+		<f:viewAction action="#{modelParent.actualiserCourant()}" />
 	</f:metadata>
 
-    <ui:define name="titre">Personne</ui:define>
+    <ui:define name="titre">Parents</ui:define>
 
     <ui:define name="contenu">
 	
@@ -22,7 +22,7 @@
 				</td>
 				<td>
 					<h:inputText id="id" size="5" readonly="true"
-						value="#{modelPersonne.courant.id}" />
+						value="#{modelParent.courant.id}" />
 					<br /><h:message for="id" errorClass="error"/>
 				</td>
 			</tr>
@@ -32,7 +32,7 @@
 				</td>
 				<td>
 					<h:inputText id="nom" size="25" 
-						value="#{modelPersonne.courant.nom}" />
+						value="#{modelParent.courant.nom}" />
 					<br /><h:message for="nom" errorClass="error"/>
 				</td>
 			</tr>
@@ -42,28 +42,15 @@
 				</td>
 				<td>
 					<h:inputText id="prenom" size="25" 
-						value="#{modelPersonne.courant.prenom}" />
+						value="#{modelParent.courant.prenom}" />
 					<br /><h:message for="prenom" errorClass="error"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h:outputLabel for="categorie">Categorie :</h:outputLabel>				
-				</td>
-				<td>
-					<h:selectOneMenu id="categorie" 
-						value="#{modelPersonne.courant.categorie}" 
-						converter="#{converterCategorie}">
-						<f:selectItems value="#{modelCategorie.liste}"  />
-					</h:selectOneMenu>
-					<br /><h:message for="categorie" errorClass="error"/>
 				</td>
 			</tr>
 		</table>
 		
 		<br />
 		<h:dataTable id="tableTelephones" styleClass="liste" 
-			value="#{modelPersonne.courant.telephones}" 
+			value="#{modelParent.courant.telephones}" 
 			var="telephone" 
 			style="width:350px">
 		
@@ -91,13 +78,8 @@
 			</h:column>
 			
 			<h:column>
-				<h:commandButton value="Supprimer" 
-					action="#{modelPersonne.supprimerTelephone(telephone)}"
-					immediate="true" 
-					image="#{ resource['images:supprimer.png'] }" 
-					title="Supprimer"
-					styleClass="image-action"
-				>
+				<h:commandButton value="Supprimer" action="#{modelParent.supprimerTelephone(telephone)}"
+					immediate="true" image="#{ resource['images:supprimer.png'] }" title="Supprimer" styleClass="image-action">
 					<f:ajax render="@form" execute="@form" />
 				</h:commandButton>
 			</h:column>
@@ -105,13 +87,13 @@
 
 		<br /> 
 		<h:commandButton value="Ajouter téléphone" 
-			action="#{modelPersonne.ajouterTelephone()}" >
+			action="#{modelParent.ajouterTelephone()}" >
 			<f:ajax render="tableTelephones" execute="tableTelephones" />
 		</h:commandButton>
 		<h:commandButton value="Valider" 
-			action="#{modelPersonne.validerMiseAJour()}">
+			action="#{modelParent.validerMiseAJour()}">
 		</h:commandButton>
-		<h:button value="Retour" outcome="personnes" />
+		<h:button value="Retour" outcome="parents" />
 	</h:form>
 
 	</ui:define>

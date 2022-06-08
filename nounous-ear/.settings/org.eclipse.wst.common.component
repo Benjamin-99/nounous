@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                        
+                            
+    
     
     
     
     
     <wb-module deploy-name="nounous">
-                                                
+                                                        
+        
         
         
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-                                                
+                                                        
+        
         
         
         
@@ -29,13 +32,15 @@
         <dependent-module archiveName="nounous-web.war" deploy-path="/" handle="module:/resource/nounous-web/nounous-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                                            
+                                                    
+    
     
     
     
     
     </wb-module>
-                    
+                        
+
 
 
 
