@@ -1,6 +1,10 @@
 package nounous.commun.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 
 
@@ -10,7 +14,7 @@ public class DtoNounou implements Serializable {
 	
 	// Champs
 	
-	private int				idNounou;
+	private Integer			idNounou;
 	
 	private String			nom;
 	
@@ -18,11 +22,15 @@ public class DtoNounou implements Serializable {
 	
 	private String          adresse;
 	
-	private String	telephone ;
+	private DtoCompte compte;
+	
+	private List<DtoTelephone>	telephones = new ArrayList<>();	
+	
 	
 	
 	// Constructeurs
 	
+
 	public DtoNounou() {
 	}
 
@@ -39,6 +47,19 @@ public class DtoNounou implements Serializable {
 	// Getters & setters
 
 	
+
+	public DtoCompte getCompte() {
+		return compte;
+	}
+
+	public void setIdNounou(Integer idNounou) {
+		this.idNounou = idNounou;
+	}
+
+	public void setCompte(DtoCompte compte) {
+		this.compte = compte;
+	}
+
 
 	public String getNom() {
 		return nom;
@@ -58,12 +79,6 @@ public class DtoNounou implements Serializable {
 		return adresse;
 	}
 
-	/**
-	 * @return the telephone
-	 */
-	public String getTelephone() {
-		return telephone;
-	}
 
 	/**
 	 * @param idNounou the idNounou to set
@@ -79,11 +94,13 @@ public class DtoNounou implements Serializable {
 		this.adresse = adresse;
 	}
 
-	/**
-	 * @param telephone the telephone to set
-	 */
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+
+	public List<DtoTelephone> getTelephones() {
+		return telephones;
+	}
+
+	public void setTelephones(List<DtoTelephone> telephones) {
+		this.telephones = telephones;
 	}
 
 	public void setNom(String nom) {

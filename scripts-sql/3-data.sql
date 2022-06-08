@@ -50,10 +50,10 @@ INSERT INTO parent (IdParent,IdCompte,  Adresse, Nom, Prenom) VALUES
 
 ALTER TABLE parent ALTER COLUMN IdParent RESTART WITH 4;
 
-INSERT INTO nounou (IdNounou,IdCompte,  Adresse, Nom, Prenom,Telephone) VALUES 
-  ( 1, 1,'re', 'DESVALOIS', 'Christian','06 11 11 11 11' ),
-  ( 2, 2,'re', 'BELABDELLI', 'Fethi','05 55 99 11 11' ),
-  ( 3, 3,'re', 'AMBLARD', 'Emmanuel','05 55 11 11 11' );
+INSERT INTO nounou (IdNounou,IdCompte,  Adresse, Nom, Prenom) VALUES 
+  ( 1, 1,'re', 'DESVALOIS', 'Christian' ),
+  ( 2, 2,'re', 'BELABDELLI', 'Fethi' ),
+  ( 3, 3,'re', 'AMBLARD', 'Emmanuel');
 
 ALTER TABLE nounou ALTER COLUMN IdNounou RESTART WITH 4;
 

@@ -27,6 +27,13 @@ public class Telephone {
 	private Parent		parent;
 	
 	@ManyToOne
+	@JoinColumn( name = "idnounou" )
+	private Nounou		nounou;
+	
+	
+
+
+	@ManyToOne
 	@JoinColumn( name = "idpersonne" )
 	private Personne		personne;
 
@@ -51,7 +58,21 @@ public class Telephone {
 
 
 	// Getters & setters
+	public Parent getParent() {
+		return parent;
+	}
 
+	public Nounou getNounou() {
+		return nounou;
+	}
+
+	public void setParent(Parent parent) {
+		this.parent = parent;
+	}
+
+	public void setNounou(Nounou nounou) {
+		this.nounou = nounou;
+	}
 	public int getId() {
 		return id;
 	}

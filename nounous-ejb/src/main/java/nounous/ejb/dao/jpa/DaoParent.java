@@ -13,8 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import nounous.ejb.dao.IDaoParent;
-import nounous.ejb.data.Contrat;
-import nounous.ejb.data.Enfant;
+import nounous.ejb.data.Parent;
 
 
 @Stateless
@@ -32,49 +31,41 @@ public class DaoParent implements IDaoParent {
 	
 
 	@Override
-	public int inserer(Enfant enfant) {
-		em.persist(enfant);
+	public int inserer(Parent parent) {
+		em.persist(parent);
 		em.flush();
-		return enfant.getIdEnfant();
+		return parent.getIdParent();
 	}
 
 	@Override
-	public void modifier(Enfant enfant) {
-		em.merge(enfant);
+	public void modifier(Parent parent) {
+		em.merge(parent);
 		
 	}
 
 	@Override
-	public void supprimer(int idEnfant) {
-		em.remove(retrouver(idEnfant));
+	public void supprimer(int idParent) {
+		em.remove(retrouver(idParent));
 		
-	}
-
-	@Override
-	public Enfant retrouverEnfant(int idEnfant) {
-		var graph = em.createEntityGraph( Enfant.class );
-		graph.addAttributeNodes( "enfants" );
-		var props = new HashMap<String, Object>();
-		props.put( "javax.persistence.loadgraph", graph );
-		return em.find( Enfant.class, idEnfant, props );
 	}
 	
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
-	public Contrat retrouver(int idEnfant) {
-		var graph = em.createEntityGraph( Contrat.class );
+	public Parent retrouver(int idParent) {
+		var graph = em.createEntityGraph( Parent.class );
 		graph.addAttributeNodes( "telephones" );
+		graph.addAttributeNodes( "enfants" );
 		var props = new HashMap<String, Object>();
 		props.put( "javax.persistence.loadgraph", graph );
-		return em.find( Contrat.class, idEnfant, props );
+		return em.find( Parent.class, idParent, props );
 	}
 
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
-	public List<Enfant> listerTout(int id) {
+	public List<Parent> listerTout(int id) {
 		em.clear();
-		var jpql = "SELECT e FROM Enfant e ORDER BY e.nom, e.prenom WHERE e.idparent = :.id";
-		var query = em.createQuery( jpql, Enfant.class );
+		var jpql = "SELECT p FROM Parent p ORDER BY p.nom, p.prenom WHERE p.idparent = :.id";
+		var query = em.createQuery( jpql, Parent.class );
 		return query.getResultList();
 	}
 

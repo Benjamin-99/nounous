@@ -22,12 +22,12 @@ public class Enfant {
 	@Column( name = "idenfant" )
 	private int				idEnfant;
 	
-	@ManyToOne
-	@JoinColumn( name = "idparent")
-	private Parent parent;
-	
 	@Column( name = "nomenfant" )
 	private String			nom;
+
+	@ManyToOne
+	@JoinColumn( name = "idparent" )
+	private Parent		parent;
 
 	@Column( name = "prenomenfant" )
 	private String			prenom;
@@ -59,11 +59,6 @@ public class Enfant {
 	}
 
 
-	public void setIdEnfant(int idEnfant) {
-		this.idEnfant = idEnfant;
-	}
-
-
 	public Parent getParent() {
 		return parent;
 	}
@@ -72,6 +67,12 @@ public class Enfant {
 	public void setParent(Parent parent) {
 		this.parent = parent;
 	}
+
+
+	public void setIdEnfant(int idEnfant) {
+		this.idEnfant = idEnfant;
+	}
+
 
 
 	public String getNom() {

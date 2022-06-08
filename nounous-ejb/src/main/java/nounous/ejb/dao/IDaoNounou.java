@@ -2,22 +2,20 @@ package nounous.ejb.dao;
 
 import java.util.List;
 
-import nounous.ejb.data.Enfant;
-import nounous.ejb.data.Parent;
+import nounous.ejb.data.Nounou;
 
 
 public interface IDaoNounou {
 
-	int			inserer( Parent parent );
+	int			inserer( Nounou nounou );
 
-	void 		modifier( Parent parent );
+	void 		modifier( Nounou nounou );
 
-	void 		supprimer( int idParent );
+	void 		supprimer( int idNounou );
 
-	Parent 		retrouver( int idParent );
+	Nounou 		retrouver( int idNounou );
 
-	List<Enfant> listerTout();
+	List<Nounou> listerTout();
     
-    //int 		compterPourCategorie( int idCategorie );
 
 }

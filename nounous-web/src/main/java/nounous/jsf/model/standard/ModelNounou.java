@@ -9,10 +9,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import nounous.commun.dto.DtoParent;
+import nounous.commun.dto.DtoNounou;
 import nounous.commun.exception.ExceptionValidation;
-import nounous.commun.service.IServiceParent;
-import nounous.jsf.data.Parent;
+import nounous.commun.service.IServiceNounou;
+import nounous.jsf.data.Nounou;
 import nounous.jsf.data.Telephone;
 import nounous.jsf.data.mapper.IMapper;
 import nounous.jsf.util.UtilJsf;
@@ -21,17 +21,17 @@ import nounous.jsf.util.UtilJsf;
 @SuppressWarnings("serial")
 @ViewScoped
 @Named
-public class ModelParent implements Serializable {
+public class ModelNounou implements Serializable {
 
 	
 	// Champs
 	
-	private List<Parent>		liste;
+	private List<Nounou>		liste;
 	
-	private Parent			courant;
+	private Nounou			courant;
 	
 	@EJB
-	private IServiceParent 	serviceParent ;
+	private IServiceNounou 	serviceNounou ;
 
 	@Inject
 	private IMapper				mapper;
@@ -39,19 +39,19 @@ public class ModelParent implements Serializable {
 	
 	// Getters 
 	
-	public List<Parent> getListe(int idContrat) {
+	public List<Nounou> getListe() {
 		if ( liste == null ) {
 			liste = new ArrayList<>();
-			for ( DtoParent dto : serviceParent .listerTout(idContrat) ) {
+			for ( DtoNounou dto : serviceNounou .listerTout() ) {
 				liste.add( mapper.map( dto ) );
 			}
 		}
 		return liste;
 	}
 
-	public Parent  getCourant() {
+	public Nounou  getCourant() {
 		if ( courant == null ) {
-			courant = new Parent ();
+			courant = new Nounou ();
 		}
 		return courant;
 	}
@@ -61,7 +61,7 @@ public class ModelParent implements Serializable {
 	
 	public String actualiserCourant() {
 		if ( courant != null ) {
-			DtoParent  dto = serviceParent .retrouver( courant.getidParent() ); 
+			DtoNounou  dto = serviceNounou .retrouver( courant.getIdNounou() ); 
 			if ( dto == null ) {
 				UtilJsf.messageError( "La personne demandée n'existe pas" );
 				return "liste";
@@ -77,10 +77,10 @@ public class ModelParent implements Serializable {
 	
 	public String validerMiseAJour() {
 		try {
-			if ( courant.getidParent() == null) {
-				serviceParent .inserer( mapper.map(courant) );
+			if ( courant.getIdNounou() == null) {
+				serviceNounou .inserer( mapper.map(courant) );
 			} else {
-				serviceParent .modifier( mapper.map(courant) );
+				serviceNounou .modifier( mapper.map(courant) );
 			}
 			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
 			return "liste";
@@ -90,9 +90,9 @@ public class ModelParent implements Serializable {
 		}
 	}
 	
-	public String supprimer( Parent  parent ) {
+	public String supprimer( Nounou  parent ) {
 		try {
-			serviceParent .supprimer( parent.getidParent() );
+			serviceNounou .supprimer( parent.getIdNounou() );
 			liste.remove(parent);
 			UtilJsf.messageInfo( "Suppression effectuée avec succès." );
 		} catch (ExceptionValidation e) {

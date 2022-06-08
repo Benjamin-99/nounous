@@ -2,6 +2,7 @@ package nounous.ejb.data;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,9 +12,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 
 @Entity
@@ -28,7 +30,7 @@ public class Nounou {
 	@Column( name = "idnounou" )
 	private Integer			idNounou;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="idcompte")
 	private Compte		compte;
     
@@ -37,28 +39,37 @@ public class Nounou {
 
 	@Column( name = "prenom" )
 	private String			prenom;
-	
-	@Column( name = "telephone")
-	private String 			telephone;
+
 
 	@Column( name = "adresse" )
 	private String  		adresse;
 	
-	@OneToMany( mappedBy="parent", cascade=CascadeType.ALL )
-	 private List<Contrat> contrat;
+	@OneToMany( mappedBy="nounou", cascade=CascadeType.ALL )
+	 private List<Contrat> contrats;
+	@OneToMany( mappedBy="nounou", cascade=CascadeType.ALL )
+	private List<Telephone>	telephones = new ArrayList<>();
+
+
 	
 	// Constructeurs
+	
+	public List<Telephone> getTelephones() {
+		return telephones;
+	}
+
+	public void setTelephones(List<Telephone> telephones) {
+		this.telephones = telephones;
+	}
 
 	public Nounou() {
 		super();
 	}
     
-    public Nounou(Integer id, Integer idCompte, String nom, String prenom, String telephone, String adresse) {
+    public Nounou(Integer idNounou, Integer idCompte, String nom, String prenom, String adresse) {
 		super();
-		this.idNounou = id;
+		this.idNounou = idNounou;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.telephone = telephone;
 		this.adresse = adresse;
 	}
     
@@ -82,16 +93,16 @@ public class Nounou {
 		return compte;
 	}
 
-	public List<Contrat> getContrat() {
-		return contrat;
+	public List<Contrat> getContrats() {
+		return contrats;
 	}
 
 	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
 
-	public void setContrat(List<Contrat> contrat) {
-		this.contrat = contrat;
+	public void setContrats(List<Contrat> contrats) {
+		this.contrats = contrats;
 	}
 
 	public void setNom(String nom) {
@@ -107,13 +118,6 @@ public class Nounou {
 	}
 	
 
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;

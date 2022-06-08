@@ -48,6 +48,11 @@ public class Contrat implements Serializable {
 
 	@NotNull( message = "La date de naissance est obligatoire")
 	private Date  dateNaissance		;
+	
+	private Parent parent;
+	
+	private Nounou nounou;
+	
 	// Constructeurs
 	
 	
@@ -96,6 +101,22 @@ public class Contrat implements Serializable {
 
 
 
+
+	public Parent getParent() {
+		return parent;
+	}
+
+	public Nounou getNounou() {
+		return nounou;
+	}
+
+	public void setParent(Parent parent) {
+		this.parent = parent;
+	}
+
+	public void setNounou(Nounou nounou) {
+		this.nounou = nounou;
+	}
 
 	/**
 	 * @return the heureArrivee

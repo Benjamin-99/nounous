@@ -20,13 +20,15 @@ public class DtoParent implements Serializable {
 	
 	private String          adresse;
 	
-
-
 	private List<DtoTelephone>	telephones = new ArrayList<>();
 	
 	
+
+	
 	// Constructeurs
 	
+
+
 	public DtoParent() {
 	}
 
@@ -45,7 +47,6 @@ public class DtoParent implements Serializable {
 	public int getIdParent() {
 		return idParent;
 	}
-
 	public String getAdresse() {
 		return adresse;
 	}
@@ -83,5 +84,6 @@ public class DtoParent implements Serializable {
 	public void setTelephones(List<DtoTelephone> telephones) {
 		this.telephones = telephones;
 	}
+
 
 }

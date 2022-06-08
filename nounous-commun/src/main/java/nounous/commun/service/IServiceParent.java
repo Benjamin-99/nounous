@@ -16,7 +16,7 @@ public interface IServiceParent {
 	
 	DtoParent 	retrouver( int idParent );
 	
-	List<DtoParent> listerTout();
+	List<DtoParent> listerTout(int idParent);
 	
 
 }

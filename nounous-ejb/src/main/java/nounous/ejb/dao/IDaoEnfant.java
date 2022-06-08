@@ -2,18 +2,20 @@ package nounous.ejb.dao;
 
 import java.util.List;
 
-import nounous.ejb.data.Parent;
-import nounous.ejb.data.Telephone;
+import nounous.ejb.data.Enfant;
 
 
 public interface IDaoEnfant {
 
-	void insererPourParent(Parent parent);
+	int inserer(Enfant parent);
 
-	void modifierPourPersonne(Parent parent);
+	void modifier(Enfant parent);
 
-	void supprimerPourPersonne(int idParent);
+	void supprimer(int idEnfant);
 
-	List<Telephone> listerPourParent( Parent parent );
+	List<Enfant> listerTout();
 
+	Enfant retrouver(int idEnfant);
+
+	
 }

@@ -9,6 +9,8 @@ public class DtoContrat implements Serializable {
 
 	// Champs
 
+	
+
 	private int idContrat;
 
 	private Date datedbcontrat;
@@ -20,9 +22,7 @@ public class DtoContrat implements Serializable {
 	private double tarifRepas;
 
 	private Date DateDeGarde;
-
-	private DtoParent parent;
-
+	
 	private Timer heureArrivee;
 
 	private Timer heureDepart;
@@ -34,11 +34,11 @@ public class DtoContrat implements Serializable {
 	private String prenomEnfant;
 
 	private Date dateNaissance;
+	
 	// Constructeurs
-
 	public DtoContrat(int idContrat, Date datedbcontrat, double tarifHoraire, Timer nbreHeuresEntretien,
-			double tarifRepas, Date dateDeGarde, Timer heureArrivee, Timer heureDepart, boolean repas, String nomEnfant,
-			String prenomEnfant, Date dateNaissance, DtoParent parent) {
+			double tarifRepas, Date dateDeGarde,  Timer heureArrivee,
+			Timer heureDepart, boolean repas, String nomEnfant, String prenomEnfant, Date dateNaissance) {
 		super();
 		this.idContrat = idContrat;
 		this.datedbcontrat = datedbcontrat;
@@ -52,11 +52,10 @@ public class DtoContrat implements Serializable {
 		this.nomEnfant = nomEnfant;
 		this.prenomEnfant = prenomEnfant;
 		this.dateNaissance = dateNaissance;
-		this.parent = parent;
 	}
+	
 
 	// Getters & setters
-
 	/**
 	 * @param idContrat the idContrat to set
 	 */
@@ -64,13 +63,6 @@ public class DtoContrat implements Serializable {
 		this.idContrat = idContrat;
 	}
 
-	public DtoParent getParent() {
-		return parent;
-	}
-
-	public void setParent(DtoParent parent) {
-		this.parent = parent;
-	}
 
 	/**
 	 * @return the dateDeGarde

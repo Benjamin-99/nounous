@@ -13,6 +13,10 @@ import javax.inject.Inject;
 import nounous.commun.dto.Roles;
 import nounous.jsf.data.Categorie;
 import nounous.jsf.data.Compte;
+import nounous.jsf.data.Contrat;
+import nounous.jsf.data.Enfant;
+import nounous.jsf.data.Nounou;
+import nounous.jsf.data.Parent;
 import nounous.jsf.data.Personne;
 import nounous.jsf.data.Telephone;
 import nounous.jsf.data.mapper.IMapper;
@@ -28,6 +32,10 @@ public class Donnees implements Serializable {
     private final Map<Integer, Compte>  	mapComptes 		= new HashMap<>();
 	private final Map<Integer, Categorie>	mapCategories 	= new HashMap<>();
 	private final Map<Integer, Personne>	mapPersonnes	= new HashMap<>();
+	private final Map<Integer, Parent>	mapParents	= new HashMap<>();
+	private final Map<Integer, Nounou>	mapNounous	= new HashMap<>();
+	private final Map<Integer, Enfant>	mapEnfants	= new HashMap<>();
+	private final Map<Integer, Contrat>	mapContrats	= new HashMap<>();
 
 	private int 	dernierIdTelephone;
 	
@@ -37,6 +45,8 @@ public class Donnees implements Serializable {
 	
 	// Getters
 	
+	
+	
 	public List<Categorie> getCategories() {
 		List<Categorie> categories = new ArrayList<>();
 		for ( Categorie categorie : mapCategories.values() ) {
@@ -45,6 +55,38 @@ public class Donnees implements Serializable {
 		return categories;
 	}
 	
+	public List < Parent> getParents() {
+		List<Parent> parents = new ArrayList<>();
+		for ( Parent parent : mapParents.values() ) {
+			parents.add( mapper.duplicate( parent ) );
+		}
+		return parents;
+	}
+
+	public List <Nounou> getNounous() {
+		List<Nounou> nounous = new ArrayList<>();
+		for ( Nounou nounou : mapNounous.values() ) {
+			nounous.add( mapper.duplicate( nounou ) );
+		}
+		return nounous;
+	}
+
+	public List <Enfant> getEnfants() {
+		List<Enfant> enfants = new ArrayList<>();
+		for ( Enfant enfant : mapEnfants.values() ) {
+			enfants.add( mapper.duplicate( enfant ) );
+		}
+		return enfants;
+	}
+
+	public List<Contrat> getContrats() {
+		List<Contrat> contrats = new ArrayList<>();
+		for ( Contrat contrat : mapContrats.values() ) {
+			contrats.add( mapper.duplicate( contrat ) );
+		}
+		return contrats;
+	}
+
 	public List<Compte> getComptes() {
 		List<Compte> comptes = new ArrayList<>();
 		for ( Compte compte : mapComptes.values() ) {

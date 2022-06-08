@@ -1,6 +1,8 @@
 package nounous.jsf.data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.NotBlank;
@@ -24,6 +26,9 @@ public class Parent implements Serializable  {
 
 	
 	private String		adresse;
+	
+
+	private List<Telephone>	telephones = new ArrayList<>();
 	
 	
 	// Constructeurs
@@ -54,6 +59,18 @@ public class Parent implements Serializable  {
 		public Integer getidParent() {
 			return idParent;
 		}
+		public Integer getIdParent() {
+		return idParent;
+	}
+	public List<Telephone> getTelephones() {
+		return telephones;
+	}
+	public void setIdParent(Integer idParent) {
+		this.idParent = idParent;
+	}
+	public void setTelephones(List<Telephone> telephones) {
+		this.telephones = telephones;
+	}
 		/**
 		 * @return the nom
 		 */

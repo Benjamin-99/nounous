@@ -25,6 +25,8 @@ public class Enfant implements Serializable  {
 	@NotNull
 	private Date  			dateNaissance;
 	
+	private Parent          parent;
+	
 	
 	// Constructeurs
 	
@@ -67,6 +69,18 @@ public class Enfant implements Serializable  {
 	 */
 	public String getNom() {
 		return nom;
+	}
+
+
+
+	public Parent getParent() {
+		return parent;
+	}
+
+
+
+	public void setParent(Parent parent) {
+		this.parent = parent;
 	}
 
 

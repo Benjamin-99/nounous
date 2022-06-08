@@ -13,8 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import nounous.ejb.dao.IDaoNounou;
-import nounous.ejb.data.Enfant;
-import nounous.ejb.data.Parent;
+import nounous.ejb.data.Nounou;
 
 
 @Stateless
@@ -31,50 +30,41 @@ public class DaoNounou implements IDaoNounou {
 	// Actions
 	
 	@Override
-	public int inserer(Parent parent) {
-		em.persist(parent);
+	public int inserer(Nounou nounou) {
+		em.persist(nounou);
 		em.flush();
-		return parent.getIdParent();
+		return nounou.getId();
 	}
 
 	@Override
-	public void modifier(Parent parent) {
-		em.merge( parent );
+	public void modifier(Nounou nounou) {
+		em.merge( nounou );
 	}
 
 	@Override
-	public void supprimer(int idParent) {
-		em.remove( retrouver(idParent) );
+	public void supprimer(int idNounou) {
+		em.remove( retrouver(idNounou) );
 	}
 
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
-	public Parent retrouver(int idParent) {
-		var graph = em.createEntityGraph( Parent.class );
-		graph.addAttributeNodes( "enfants" );
+	public Nounou retrouver(int idNounou) {
+		var graph = em.createEntityGraph( Nounou.class );
+		graph.addAttributeNodes( "contrats" );
 		graph.addAttributeNodes( "telephones" );
 		var props = new HashMap<String, Object>();
 		props.put( "javax.persistence.loadgraph", graph );
-		return em.find( Parent.class, idParent, props );
+		return em.find( Nounou.class, idNounou, props );
 	}
 
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
-	public List<Enfant> listerTout() {
+	public List<Nounou> listerTout() {
 		em.clear();
-		var jpql = "SELECT e FROM Enfant e ORDER BY e.nom, e.prenom";
-		var query = em.createQuery( jpql, Enfant.class );
+		var jpql = "SELECT n FROM Nounou n ORDER BY n.nom, n.prenom";
+		var query = em.createQuery( jpql, Nounou.class );
 		return query.getResultList();
 	}
 
-
-	/*@Override
-	@TransactionAttribute( NOT_SUPPORTED )
-	public int compterPourCategorie(int idCategorie) {
-		var jpql = "SELECT COUNT(p) FROM Parent p WHERE p.categorie.id = :idCategorie";
-		var query = em.createQuery( jpql, Long.class );
-		query.setParameter( "idCategorie", idCategorie );
-		return query.getSingleResult().intValue();
-	}*/
 
 }

@@ -11,9 +11,7 @@ import java.util.Date;
 public class DtoEnfant implements Serializable {
 	
 	private int				idEnfant;
-	
-	private int 			idparent;
-	
+		
 	private String			nom;
 
 	private String			prenom;
@@ -28,17 +26,18 @@ public class DtoEnfant implements Serializable {
 	}
 
 
-	public DtoEnfant(int idEnfant, int idparent, String nom, String prenom, Date dateNaissance) {
+ DtoEnfant(int idEnfant, String nom, String prenom, Date dateNaissance) {
 		super();
 		this.idEnfant = idEnfant;
-		this.idparent = idparent;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
 	}
-	
-	
-	
+
+
+
+
+
 	//Getters & Setters
 	
 
@@ -56,14 +55,6 @@ public class DtoEnfant implements Serializable {
 	}
 
 
-	public int getIdparent() {
-		return idparent;
-	}
-
-
-	public void setIdparent(int idparent) {
-		this.idparent = idparent;
-	}
 
 	public String getNom() {
 		return nom;

@@ -6,12 +6,13 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
@@ -34,10 +35,6 @@ public class Parent {
 	@Column( name = "prenom" )
 	private String			prenom;
 	
-	
-	
-	 @OneToMany( mappedBy="parent", cascade=CascadeType.ALL )
-	 private List<Contrat> contrat;
 
 	
 	@Column( name = "adresse" )
@@ -46,11 +43,12 @@ public class Parent {
 	@OneToMany( mappedBy = "parent", cascade = ALL, orphanRemoval = true  )
 	@OrderBy( "libelle" )
 	private List<Telephone>	telephones = new ArrayList<>();
-	
 	@OneToMany( mappedBy = "parent", cascade = ALL, orphanRemoval = true  )
-	@OrderBy( "prenom" )
+	@OrderBy( "libelle" )
 	private List<Enfant>	enfants = new ArrayList<>();
-	
+
+	@OneToOne  @JoinColumn( name="idCompte" )
+	private Compte compte;
 	
 	// Constructeurs
 	
@@ -58,13 +56,12 @@ public class Parent {
 	}
 
 
-	public Parent(int idParent, String nom, String prenom, String adresse, List<Enfant> enfants) {
+	public Parent(int idParent, String nom, String prenom, String adresse) {
 		super();
 		this.idParent = idParent;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
-		this.enfants = enfants;
 	}
 
 	
@@ -72,6 +69,38 @@ public class Parent {
 	// Getters & setters
 
 
+	
+	
+	 public List<Contrat> getContrats() {
+		return contrats;
+	}
+
+
+	public List<Telephone> getTelephones() {
+		return telephones;
+	}
+
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+
+	public void setContrats(List<Contrat> contrats) {
+		this.contrats = contrats;
+	}
+
+
+	public void setTelephones(List<Telephone> telephones) {
+		this.telephones = telephones;
+	}
+
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
+	private List<Contrat> contrats;
 
 
 
@@ -93,14 +122,14 @@ public class Parent {
 	
 
 	public List<Contrat> getContrat() {
-		return contrat;
+		return contrats;
 	}
 
 
 
 
-	public void setContrat(List<Contrat> contrat) {
-		this.contrat = contrat;
+	public void setContrat(List<Contrat> contrats) {
+		this.contrats = contrats;
 	}
 
 
@@ -123,13 +152,6 @@ public class Parent {
 		this.adresse = adresse;
 	}
 
-/*	public List<Telephone> getTelephones() {
-		return telephones;
-	}
-
-	public void setTelephones(List<Telephone> telephones) {
-		this.telephones = telephones;
-	}*/
 
 	public List<Enfant> getEnfants() {
 		return enfants;
@@ -141,14 +163,6 @@ public class Parent {
 	
 	// Actions
 
-	/*public void ajouterTelephone( Telephone telephone ) {
-		telephones.add( telephone );
-	}
-	
-
-	public void retirerTelephone( Telephone telephone ) {
-		telephones.remove(telephone);
-	}*/
 	
 	public void ajouterEnfant( Enfant enfant ) {
 		enfants.add( enfant );

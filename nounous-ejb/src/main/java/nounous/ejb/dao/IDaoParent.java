@@ -2,22 +2,19 @@ package nounous.ejb.dao;
 
 import java.util.List;
 
-import nounous.ejb.data.Contrat;
-import nounous.ejb.data.Enfant;
+import nounous.ejb.data.Parent;
 
 
 public interface IDaoParent {
 
-	int				inserer( Enfant enfant );
+	int				inserer(Parent parent );
 
-	void 			modifier( Enfant enfant );
+	void 			modifier(Parent parent );
 
-	void 			supprimer( int idEnfant );
+	void 			supprimer( int idParent );
 	
-	Enfant			retrouverEnfant(int idEnfant);
-	
-	Contrat 		retrouver( int idEnfant );
+	Parent 		retrouver( int idParent );
 
-	List<Enfant> 	listerTout(int id);
+	List<Parent> 	listerTout(int id);
     
 }

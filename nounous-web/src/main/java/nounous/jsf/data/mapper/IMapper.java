@@ -7,10 +7,18 @@ import org.mapstruct.MappingTarget;
 
 import nounous.commun.dto.DtoCategorie;
 import nounous.commun.dto.DtoCompte;
+import nounous.commun.dto.DtoContrat;
+import nounous.commun.dto.DtoEnfant;
+import nounous.commun.dto.DtoNounou;
+import nounous.commun.dto.DtoParent;
 import nounous.commun.dto.DtoPersonne;
 import nounous.commun.dto.DtoTelephone;
 import nounous.jsf.data.Categorie;
 import nounous.jsf.data.Compte;
+import nounous.jsf.data.Contrat;
+import nounous.jsf.data.Enfant;
+import nounous.jsf.data.Nounou;
+import nounous.jsf.data.Parent;
 import nounous.jsf.data.Personne;
 import nounous.jsf.data.Telephone;
 
@@ -48,6 +56,42 @@ public interface IMapper {
     Personne duplicate( Personne source );
 
 	
+	// Parent
+	
+	Parent    map( DtoParent source );
+	
+	DtoParent map( Parent source );
+	
+    Parent duplicate( Parent source );
+    
+	
+	// Nounou
+	
+	Nounou    map( DtoNounou source );
+	
+	DtoNounou map( Nounou source );
+	
+    Nounou duplicate(Nounou source );
+    
+    
+	
+	// Enfant
+	
+    Enfant   map( DtoEnfant source );
+	
+	DtoEnfant map( Enfant source );
+	
+	Enfant duplicate( Enfant source );
+	
+
+	// Contrat
+	
+    Contrat   map( DtoContrat source );
+	
+	DtoContrat map( Contrat source );
+	
+	Contrat duplicate( Contrat source );
+    
 	// Telephone
 	
 	Telephone    map( DtoTelephone source );
