@@ -152,6 +152,27 @@ public class Donnees implements Serializable {
 	}
 	
 	
+	public int contratAjouter( Contrat contrat ) {
+		Integer idMax = Collections.max( mapContrats.keySet() );
+		if ( idMax == null ) {
+			idMax = 0;
+		}
+		contrat.setIdContrat( idMax + 1 );
+		mapContrats.put( contrat.getIdContrat(), mapper.duplicate(contrat ) );
+		return contrat.getIdContrat();
+	}
+	public void contratModifier( Contrat contrat ) {
+		mapContrats.replace(contrat.getIdContrat(), mapper.duplicate( contrat ) );
+	}
+	public void contratSupprimer( int id ) {
+		mapComptes.remove( id );
+	}
+	public Contrat contratRetrouver( int id ) {
+		return mapper.duplicate( mapContrats.get( id ) );
+	}
+	
+	
+	
 	public void parentModifier( Parent parent ) {
 		affecterIdTelephones(parent);
 		mapParents.replace( parent.getIdParent(), mapper.duplicate( parent) );
