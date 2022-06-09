@@ -5,28 +5,28 @@
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:ui="http://java.sun.com/jsf/facelets">>
 
-     <ui:define name="titre">Liste des personnes</ui:define>
+     <ui:define name="titre">Liste des Contrats</ui:define>
 
     <ui:define name="contenu">
 
 	<h:form>
 
 		<h:dataTable styleClass="liste" 
-			value="#{modelPersonne.liste}" var="item" 
+			value="#{modelContrat.getListe()}" var="item" 
 			rowClasses="impair, pair" columnClasses="center,left,center"
 		>
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Id" />
 				</f:facet>
-				#{item.id}
+				#{item.idContrat}
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Nom" />
 				</f:facet>
-				#{item.nom} #{item.prenom}
+				#{item.} #{item.prenom}
 			</h:column>
 			
 			<h:column>

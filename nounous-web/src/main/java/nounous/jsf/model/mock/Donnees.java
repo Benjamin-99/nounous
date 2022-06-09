@@ -151,6 +151,31 @@ public class Donnees implements Serializable {
 		return mapper.duplicate( mapComptes.get( id ) );
 	}
 	
+	
+	public void parentModifier( Parent parent ) {
+		affecterIdTelephones(parent);
+		mapParents.replace( parent.getIdParent(), mapper.duplicate( parent) );
+	}
+	public void parentSupprimer( int id ) {
+		mapParents.remove( id );
+	}
+	public Parent parentRetrouver( int id ) {
+		return mapper.duplicate( mapParents.get( id ) );
+	}
+
+	
+	public int parentAjouter( Parent parent ) {
+		Integer idMax = Collections.max( mapPersonnes.keySet() );
+		if ( idMax == null ) {
+			idMax = 0;
+		}
+		parent.setIdParent( idMax + 1 );
+		affecterIdTelephones(parent);
+		mapParents.put( parent.getIdParent(), mapper.duplicate( parent ) );
+		return parent.getIdParent();
+	}
+	
+	
 	public int personneAjouter( Personne personne ) {
 		Integer idMax = Collections.max( mapPersonnes.keySet() );
 		if ( idMax == null ) {
@@ -161,6 +186,7 @@ public class Donnees implements Serializable {
 		mapPersonnes.put( personne.getId(), mapper.duplicate( personne ) );
 		return personne.getId();
 	}
+	
 	public void personneModifier( Personne personne ) {
 		affecterIdTelephones(personne);
 		mapPersonnes.replace( personne.getId(), mapper.duplicate( personne ) );
@@ -171,8 +197,53 @@ public class Donnees implements Serializable {
 	public Personne personneRetrouver( int id ) {
 		return mapper.duplicate( mapPersonnes.get( id ) );
 	}
+	
+	
+	
+	public int nounouAjouter( Nounou nounou ) {
+		Integer idMax = Collections.max( mapNounous.keySet() );
+		if ( idMax == null ) {
+			idMax = 0;
+		}
+		nounou.setIdNounou( idMax + 1 );
+		affecterIdTelephones(nounou);
+		mapNounous.put( nounou.getIdNounou(), mapper.duplicate( nounou ) );
+		return nounou.getIdNounou();
+	}
+	
+	public void nounouModifier( Nounou nounou ) {
+		affecterIdTelephones(nounou);
+		mapNounous.replace( nounou.getIdNounou(), mapper.duplicate( nounou ) );
+	}
+	public void nounouSupprimer( int id ) {
+		mapNounous.remove( id );
+	}
+	public Nounou nounouRetrouver( int id ) {
+		return mapper.duplicate(mapNounous.get( id ) );
+	}
+	
 
 	
+	public int enfantAjouter( Enfant enfant ) {
+		Integer idMax = Collections.max( mapEnfants.keySet() );
+		if ( idMax == null ) {
+			idMax = 0;
+		}
+		enfant.setIdEnfant( idMax + 1 );
+		
+		mapEnfants.put( enfant.getIdEnfant(), mapper.duplicate( enfant ) );
+		return enfant.getIdEnfant();
+	}
+	
+	public void enfantModifier( Enfant enfant ) {
+		mapEnfants.replace( enfant.getIdEnfant(), mapper.duplicate( enfant ) );
+	}
+	public void enfantSupprimer( int id ) {
+		mapEnfants.remove( id );
+	}
+	public Enfant enfantRetrouver( int id ) {
+		return mapper.duplicate(mapEnfants.get( id ) );
+	}
 	// Méthodes auxiliaires
 
 	private void initialiserDonnees() {
@@ -245,5 +316,21 @@ public class Donnees implements Serializable {
 		}
 	}
 	
+	private void affecterIdTelephones( Parent parent ) {
+		for( Telephone t : parent.getTelephones() ) {
+			if ( t.getId() == 0 ) {
+				t.setId( ++dernierIdTelephone );
+			}
+		}
+	}
+	
+	private void affecterIdTelephones( Nounou nounou ) {
+		for( Telephone t : nounou.getTelephones() ) {
+			if ( t.getId() == 0 ) {
+				t.setId( ++dernierIdTelephone );
+			}
+		}
+	}
+
 	
 }

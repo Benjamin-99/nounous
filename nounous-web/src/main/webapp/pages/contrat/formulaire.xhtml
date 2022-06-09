@@ -6,7 +6,7 @@
      xmlns:ui="http://java.sun.com/jsf/facelets">>
 
 	<f:metadata>
-		<f:viewParam name="id" value="#{modelContrat.courant.id}" />
+		<f:viewParam name="id" value="#{modelContrat.courant.idContrat}" />
 		<f:viewAction action="#{modelContrat.actualiserCourant()}" />
 	</f:metadata>
 
@@ -21,76 +21,61 @@
 					<h:outputLabel for="idContrat">Id :</h:outputLabel>				
 				</td>
 				<td>
-					<h:inputText id="idcontrat" size="5" readonly="true" value="#{modelContrat.courant.idcontrat}" />
+					<h:inputText id="idcontrat" size="5" readonly="true" value="#{modelContrat.courant.idContrat}" />
 					<br /><h:message for="idcontrat" errorClass="error"/>
 				</td>
 			</tr>
 			<tr>
-				<td>
-					<h:outputLabel for="tarifhoraire">Tarif horaire :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="nom" size="25"	value="#{modelContrat.courant.tarifhoraire}" />
-					<br /><h:message for="tarifhoraire" errorClass="error"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h:outputLabel for="nbreheuresentretien">Nombre d'heures d'entretien :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="prenom" size="25" 
-						value="#{modelContrat.courant.nbreheuresentretien}" />
-					<br /><h:message for="prenom" errorClass="error"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h:outputLabel for="categorie">Categorie :</h:outputLabel>				
-				</td>
-				<td>
-					<h:selectOneMenu id="categorie" 
-						value="#{modelContrat.courant.categorie}" 
-						converter="#{converterCategorie}">
-						<f:selectItems value="#{modelCategorie.liste}"  />
-					</h:selectOneMenu>
-					<br /><h:message for="categorie" errorClass="error"/>
-				</td>
-			</tr>
-		</table>
-		
-		<br />
-		<h:dataTable id="tableTelephones" styleClass="liste" 
-			value="#{modelContrat.courant.telephones}" 
-			var="telephone" 
+					<td><h:outputLabel for="nom">Nom :</h:outputLabel></td>
+					<td><h:inputText id="nom" size="25"
+							value="#{modelContrat.courant.parent.nom}" /> <br /> <h:message
+							for="nom" errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="prenom">Prenom :</h:outputLabel></td>
+					<td><h:inputText id="prenom" size="25"
+							value="#{modelContrat.courant.parent.prenom}" /> <br /> <h:message
+							for="prenom" errorClass="error" /></td>
+				</tr>
+			<h:dataTable id="tableefants" styleClass="liste" 
+			value="#{modelContrat.courant.parent.enfants}" 
+			var="enfant" 
 			style="width:350px">
 		
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Id" />
 				</f:facet>
-				#{telephone.id}
+				#{enfant.idEnfant}
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Libellé" />
+					<h:outputText value="nom" />
 				</f:facet>
-				<h:inputText id="telLib" value="#{telephone.libelle}" />
-				<br /><h:message for="telLib" errorClass="error"/>
+				<h:inputText id="nomenf" value="#{enfant.nom}" />
+				<br /><h:message for="nomenf" errorClass="error"/>
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Numéro" />
+					<h:outputText value="prenom" />
 				</f:facet>
-				<h:inputText id="telNum" value="#{telephone.numero}" />
-				<br /><h:message for="telNum" errorClass="error"/>
+				<h:inputText id="prenomf" value="#{enfant.prenom}" />
+				<br /><h:message for="prenomf" errorClass="error"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="date de naissance" />
+				</f:facet>
+				<h:inputText id="dateness" value="#{enfant.dateNaissance}" />
+				<br /><h:message for="dateness" errorClass="error"/>
 			</h:column>
 			
 			<h:column>
 				<h:commandButton value="Supprimer" 
-					action="#{modelContrat.supprimerTelephone(telephone)}"
+					action="#{modelContrat.supprimerEnfant()}"
 					immediate="true" 
 					image="#{ resource['images:supprimer.png'] }" 
 					title="Supprimer"
@@ -100,11 +85,66 @@
 				</h:commandButton>
 			</h:column>
 		</h:dataTable>
+		
+		<tr>
+					<td><h:outputLabel for="nom">Nom nounou :</h:outputLabel></td>
+					<td><h:inputText id="nom" size="25"
+							value="#{modelContrat.courant.nounou.nom}" /> <br /> <h:message
+							for="nom" errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="nom">Prenom nounou :</h:outputLabel></td>
+					<td><h:inputText id="nom" size="25"
+							value="#{modelProduit.courant.nom}" /> <br /> <h:message
+							for="nom" errorClass="error" /></td>
+				</tr>
+		
+			<tr>
+				<td>
+					<h:outputLabel for="tarifhoraire">Tarif horaire :</h:outputLabel>				
+				</td><td><h:inputText id="prix" size="5"
+							value="#{modelContrat.courant.tarifHoraire}" required="true"
+							requiredMessage="Le prix doit être indiqué"
+							validatorMessage="Le prix ne doit pas être inférieur à zéro.">
+							<f:validateBean disabled="true" />
+							<f:validateDoubleRange minimum="0" />
+							<f:convertNumber pattern="#,##0.00" />
+						</h:inputText> € <br /> <h:message for="prix" errorClass="error" /></td>
+			</tr>
+			
+			
+				<tr>
+				<td>
+					<h:outputLabel for="tarifrepas">Tarif repas :</h:outputLabel>				
+				</td><td><h:inputText id="tarifrepas" size="5"
+							value="#{modelContrat.courant.tarifRepas  }" required="true"
+							requiredMessage="Le tarif doit être indiqué"
+							validatorMessage="Le tarif ne doit pas être inférieur à zéro.">
+							<f:validateBean disabled="true" />
+							<f:validateDoubleRange minimum="0" />
+							<f:convertNumber pattern="#,##0.00" />
+						</h:inputText> € <br /> <h:message for="tarifrepas" errorClass="error" /></td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="nbreheuresentretien">Nombre d'heures d'entretien :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="prenom" size="25" 
+						value="#{modelContrat.courant.nbreHeuresEntretien}" />
+					<br /><h:message for="prenom" errorClass="error"/>
+				</td>
+			</tr>
+	
+		</table>
+		
+		<br />
+		
 
 		<br /> 
-		<h:commandButton value="Ajouter téléphone" 
-			action="#{modelContrat.ajouterTelephone()}" >
-			<f:ajax render="tableTelephones" execute="tableTelephones" />
+		<h:commandButton value="Ajouter enfant" 
+			action="#{modelContrat.ajouterEnfant()}" >
+			<f:ajax render="tableenfants" execute="tableenfants" />
 		</h:commandButton>
 		<h:commandButton value="Valider" 
 			action="#{modelContrat.validerMiseAJour()}">
