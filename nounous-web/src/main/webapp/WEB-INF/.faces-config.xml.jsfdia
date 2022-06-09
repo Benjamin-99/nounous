@@ -30,6 +30,9 @@
    <PROCESS-ITEM-OUTPUT ID="enfants::#pages#parent#enfant#liste.xhtml"
     NAME="output7" PATH="/pages/parent/enfant/liste.xhtml"
     TARGET="rules:#pages#parent#enfant#liste.xhtml" TITLE="enfants" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="nounous::#pages#user#nounou#liste.xhtml"
+    NAME="output8" PATH="/pages/user/nounou/liste.xhtml"
+    TARGET="rules:#pages#user#nounou#liste.xhtml" TITLE="nounous" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#connexion.xhtml" PATH="/connexion.xhtml"

@@ -20,7 +20,7 @@ public class Enfant {
 	@Id
 	@GeneratedValue( strategy = IDENTITY )
 	@Column( name = "idenfant" )
-	private int				idEnfant;
+	private Integer				idEnfant;
 	
 	@Column( name = "nomenfant" )
 	private String			nom;
@@ -42,19 +42,25 @@ public class Enfant {
 	}
 
 
-	public Enfant(String nom, String prenom, Date dateNaissance, Date dateDeGarde, Timer heureArrivee,
-			Timer heureDepart, boolean repas) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
 
-	}
 	
 	
 	//Getters & Setters
 	
-	public int getIdEnfant() {
+	public Enfant(Integer idEnfant, String nom, Parent parent, String prenom, Date dateNaissance) {
+		super();
+		this.idEnfant = idEnfant;
+		this.nom = nom;
+		this.parent = parent;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+	}
+
+
+
+
+
+	public Integer getIdEnfant() {
 		return idEnfant;
 	}
 
@@ -69,7 +75,7 @@ public class Enfant {
 	}
 
 
-	public void setIdEnfant(int idEnfant) {
+	public void setIdEnfant(Integer idEnfant) {
 		this.idEnfant = idEnfant;
 	}
 

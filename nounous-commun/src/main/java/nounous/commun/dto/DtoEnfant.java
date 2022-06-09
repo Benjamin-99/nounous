@@ -10,7 +10,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class DtoEnfant implements Serializable {
 	
-	private int				idEnfant;
+	private Integer				idEnfant;
 		
 	private String			nom;
 
@@ -26,7 +26,7 @@ public class DtoEnfant implements Serializable {
 	}
 
 
- DtoEnfant(int idEnfant, String nom, String prenom, Date dateNaissance) {
+ DtoEnfant(Integer idEnfant, String nom, String prenom, Date dateNaissance) {
 		super();
 		this.idEnfant = idEnfant;
 		this.nom = nom;
@@ -45,12 +45,12 @@ public class DtoEnfant implements Serializable {
 
 
 
-	public int getIdEnfant() {
+	public Integer getIdEnfant() {
 		return idEnfant;
 	}
 
 
-	public void setIdEnfant(int idEnfant) {
+	public void setIdEnfant(Integer idEnfant) {
 		this.idEnfant = idEnfant;
 	}
 

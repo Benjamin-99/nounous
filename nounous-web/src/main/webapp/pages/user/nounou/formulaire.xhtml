@@ -6,7 +6,7 @@
      xmlns:ui="http://java.sun.com/jsf/facelets">>
 
 	<f:metadata>
-		<f:viewParam name="id" value="#{modelNounou.courant.id}" />
+		<f:viewParam name="id" value="#{modelNounou.courant.idNounou}" />
 		<f:viewAction action="#{modelNounou.actualiserCourant()}" />
 	</f:metadata>
 
@@ -22,8 +22,18 @@
 				</td>
 				<td>
 					<h:inputText id="id" size="5" readonly="true"
-						value="#{modelNounou.courant.id}" />
+						value="#{modelNounou.courant.idNounou}" />
 					<br /><h:message for="id" errorClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="idcompte">IdCompte :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="idcompte" size="5" readonly="true"
+						value="#{modelNounou.courant.compte.id}" />
+					<br /><h:message for="idcompte" errorClass="error"/>
 				</td>
 			</tr>
 			<tr>
@@ -56,6 +66,50 @@
 					<br /><h:message for="adresse" errorClass="error"/>
 				</td>
 			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="pseudo">pseudo :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="pseudo" size="50" 
+						value="#{modelNounou.courant.compte.pseudo}" />
+					<br /><h:message for="pseudo" errorClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="email">e-mail :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="email" size="50" 
+						value="#{modelNounou.courant.compte.email}" />
+					<br /><h:message for="email" errorClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="mdp">Mot de passe:</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="mdp" size="50" 
+						value="#{modelNounou.courant.compte.motDePasse} " />
+					<br /><h:message for="mdp" errorClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="roles">Roles :</h:outputLabel>				
+				</td>
+				<td>
+					<h:selectManyCheckbox id="roles" layout="pageDirection" 
+						value="#{modelNounou.courant.compte.roles}">
+						<f:selectItems value="#{utilAppli.roles}" var="role" 
+							itemLabel="#{utilAppli.getLibelléDeRole(role)}"  />
+					</h:selectManyCheckbox>
+					<h:message for="roles" errorClass="error"/>
+				</td>
+			</tr>
+			
 		</table>
 		
 		<br />
@@ -106,7 +160,7 @@
 			<f:ajax render="tableTelephones" execute="tableTelephones" />
 		</h:commandButton>
 		<h:commandButton value="Valider" 
-			action="#{modelNounou.validerMiseAJour()}">
+			action="#{modelNounou.validerMiseAJour() }">
 		</h:commandButton>
 		<h:button value="Retour" outcome="nounous" />
 	</h:form>

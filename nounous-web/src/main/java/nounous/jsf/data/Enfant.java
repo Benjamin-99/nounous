@@ -29,7 +29,7 @@ public class Enfant implements Serializable  {
 	
 	// Constructeurs
 	
-	public Enfant(@NotNull int idEnfant, @NotNull int idparent, @NotNull String nom, @NotNull String prenom,
+	public Enfant(@NotNull Integer idEnfant, @NotNull Integer idparent, @NotNull String nom, @NotNull String prenom,
 			@NotNull Date dateNaissance) {
 		super();
 		this.idEnfant = idEnfant;

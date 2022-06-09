@@ -5,21 +5,21 @@
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:ui="http://java.sun.com/jsf/facelets">>
 
-     <ui:define name="titre">Liste des personnes</ui:define>
+     <ui:define name="titre">Liste des nounous</ui:define>
 
     <ui:define name="contenu">
 
 	<h:form>
 
 		<h:dataTable styleClass="liste" 
-			value="#{modelPersonne.liste}" var="item" 
+			value="#{modelNounou.liste}" var="item" 
 			rowClasses="impair, pair" columnClasses="center,left,center"
 		>
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Id" />
 				</f:facet>
-				#{item.id}
+				#{item.idNounou}
 			</h:column>
 			
 			<h:column>
@@ -27,6 +27,13 @@
 					<h:outputText value="Nom" />
 				</f:facet>
 				#{item.nom} #{item.prenom}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Adresse" />
+				</f:facet>
+				#{item.adresse}
 			</h:column>
 			
 			<h:column>
@@ -39,7 +46,7 @@
 					title="Modifier" 
 					styleClass="image-action"
 				/>
-				<h:commandButton action="#{modelPersonne.supprimer(item)}" 
+				<h:commandButton action="#{modelNounou.supprimer(item)}" 
 					value="Supprimer" 
 					onclick="return confirm('Confirmez-vous la suppression ?')" 
 					image="#{ resource['images:supprimer.png'] }" 

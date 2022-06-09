@@ -15,7 +15,7 @@ public class Nounou implements Serializable  {
 	
 	// Champs
 	
-	Integer		idNounou;
+	private Integer		idNounou;
 	
 	@NotBlank( message = "Le pseudo doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le pseuo : 25 car. maxi" )
@@ -24,6 +24,8 @@ public class Nounou implements Serializable  {
 	@NotBlank( message = "Le pseudo doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le pseuo : 25 car. maxi" )
 	private String		prenom;
+	
+	private Compte compte;
 	
 	private String		adresse;
 	
@@ -35,25 +37,22 @@ public class Nounou implements Serializable  {
 	public Nounou() {
 	}
 		
-	
-	public Nounou(Integer idNounou,
+public Nounou(Integer idNounou,
 			@NotBlank(message = "Le pseudo doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le pseuo : 25 car. maxi") String nom,
 			@NotBlank(message = "Le pseudo doit être renseigné") @Size(max = 25, message = "Valeur trop longue pour le pseuo : 25 car. maxi") String prenom,
-			String adresse, String telephone) {
+			Compte compte, String adresse) {
 		super();
 		this.idNounou = idNounou;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.compte = compte;
 		this.adresse = adresse;
 	}
-	
 	// Getters & setters
 
 
 
-
-
-
+	
 
 
 	/**
@@ -65,6 +64,22 @@ public class Nounou implements Serializable  {
 
 
 
+
+		public Compte getCompte() {
+		return compte;
+	}
+
+	public List<Contrat> getContrats() {
+		return contrats;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
+	public void setContrats(List<Contrat> contrats) {
+		this.contrats = contrats;
+	}
 
 		public List<Telephone> getTelephones() {
 		return telephones;
